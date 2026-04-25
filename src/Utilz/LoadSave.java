@@ -12,9 +12,9 @@ import javax.imageio.ImageIO;
 
 public class LoadSave {
     
-    public static final String LEVEL_ATLAS =  "outside4_sprites.png";
-    public static final String LEVEL_ATLAS2 = "outside3_sprites.png";
-    public static final String LEVEL_ATLAS3 = "outside6_sprites.png";
+    public static final String LEVEL_ATLAS =  "Jungle_Tileset.png";
+    public static final String LEVEL_ATLAS2 = "outside11_sprites.png";
+    public static final String LEVEL_ATLAS3 = "Tileset.png";
     public static final String LEVEL_ATLAS4 = "outside_sprites2.png";
     public static final String LEVEL_ATLAS5 = "outside8_sprites.png";
     
