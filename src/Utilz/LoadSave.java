@@ -16,7 +16,7 @@ public class LoadSave {
     public static final String LEVEL_ATLAS2 = "outside11_sprites.png";
     public static final String LEVEL_ATLAS3 = "Tileset.png";
     public static final String LEVEL_ATLAS4 = "outside_sprites2.png";
-    public static final String LEVEL_ATLAS5 = "outside8_sprites.png";
+    public static final String LEVEL_ATLAS5 = "outside5_sprites.png";
     
     public static final String TILESET_LAVA = "tileset_lava.png";
 

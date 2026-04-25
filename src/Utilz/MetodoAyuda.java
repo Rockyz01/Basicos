@@ -136,7 +136,7 @@ public class MetodoAyuda {
             for (int i = 0; i < img.getWidth(); i++) {
                 Color color = new Color(img.getRGB(i, j));
                 int valor = color.getRed();
-                if (valor >= 48)
+                if (valor >= 105)
                     valor = 0;
                 lvlData[j][i] = valor;
             }
