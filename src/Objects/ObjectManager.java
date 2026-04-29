@@ -83,18 +83,18 @@ public void checkObjectHit(Rectangle2D.Float attackbox) {
                 int dropX = (int) (gc.getHitbox().x + gc.getHitbox().width / 2);
                 int dropY = (int) (gc.getHitbox().y - gc.getHitbox().height / 2);
                 
-                // Decidir qué suelta según el tipo
+                
                 if (gc.getObjType() == BOX) {
-                    // Cajas sueltan armas aleatorias
+                    
                     int randomWeapon = (int) (Math.random() * Utilz.Constantes.WeaponConstants.NUM_WEAPONS);
                     weapons.add(new Weapon(dropX, dropY, randomWeapon));
                 } else {
-                    // Barriles sueltan pociones o armaduras
+                    
                     if (Math.random() > 0.5) {
-                        // Poción roja
+                        
                         potions.add(new Potion(dropX, dropY, RED_POTION));
                     } else {
-                        // Armadura aleatoria
+                       
                         int randomArmor = (int) (Math.random() * Utilz.Constantes.WeaponConstants.NUM_ARMORS);
                         armors.add(new Armor(dropX, dropY, randomArmor));
                     }
