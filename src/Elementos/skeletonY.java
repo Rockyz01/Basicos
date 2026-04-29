@@ -17,7 +17,7 @@ public class skeletonY extends Enemy {
 
     public skeletonY(float x, float y) {
         super(x, y, SKELETONY_WIDTH,SKELETONY_HEIGHT, SKELETONY);
-        initHitBox((int) (30 * Juego.SCALE), (int) (30 * Juego.SCALE));
+        initHitBox(14, 25);
         initAttackBox();
     }
 

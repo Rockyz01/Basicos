@@ -1,6 +1,7 @@
 package Utilz;
 
 import Elementos.Golem;
+import Elementos.TrolJefe;
 import Elementos.enemigo1;
 import Elementos.enemigo10;
 import Elementos.enemigo11;
@@ -42,6 +43,11 @@ public class MetodoAyuda {
         return false;
     }
 
+
+    /** Versión pública de isSolido para uso en proyectiles */
+    public static boolean isSolidoPublic(float x, float y, int[][] lvlData) {
+        return isSolido(x, y, lvlData);
+    }
     private static boolean isSolido(float x, float y, int[][] lvlData) {
         int maxWidth = lvlData[0].length * Juego.TILES_SIZE;
         if (x < 0 || x >= maxWidth) return true;
@@ -389,6 +395,17 @@ public class MetodoAyuda {
                 Color color = new Color(img.getRGB(i, j));
                 if (color.getGreen() == ENEMIGO12)
                     list.add(new enemigo12(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
+
+    public static ArrayList<TrolJefe> GetTrolJefes(BufferedImage img) {
+        ArrayList<TrolJefe> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == TROL_JEFE)
+                    list.add(new TrolJefe(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
             }
         return list;
     }

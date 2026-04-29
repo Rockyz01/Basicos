@@ -11,12 +11,13 @@ public class Golem extends Enemy{
 
     public Golem(float x, float y) {
         super(x, y, GOLEM_WIDTH, GOLEM_HEIGHT, GOLEM);
-        initHitBox(40,20);
+        // hitbox en unidades de tile (sin escala), initHitBox aplica SCALE internamente
+        initHitBox(22, 30);
 		initAttackBox();
     }
 	private void initAttackBox() {
-		attackBox = new Rectangle2D.Float(x, y, (int) (37 * Juego.SCALE), (int) (65 * Juego.SCALE));
-		attackBoxOffsetX = (int) (Juego.SCALE * 50);
+		attackBox = new Rectangle2D.Float(x, y, (int) (20 * Juego.SCALE), (int) (30 * Juego.SCALE));
+		attackBoxOffsetX = (int) (Juego.SCALE * 20);
 	}
 	public void update(int [][] lvlData,Jugador jugador){
         updateBehavior(lvlData,jugador);
@@ -26,8 +27,13 @@ public class Golem extends Enemy{
     }
     
 	private void updateAttackBox() {
-		attackBox.x=hitbox.x;
-		attackBox.y=hitbox.y-attackBoxOffsetX;
+		// Posicionar el attackBox al frente del enemigo según su dirección
+		if (walkDir == LEFT) {
+			attackBox.x = hitbox.x - attackBoxOffsetX;
+		} else {
+			attackBox.x = hitbox.x + hitbox.width;
+		}
+		attackBox.y = hitbox.y;
 	}
 	private void updateBehavior(int[][] lvlData, Jugador jugador) {
 		if (firstUpdate)

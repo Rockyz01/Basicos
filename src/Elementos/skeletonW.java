@@ -16,13 +16,13 @@ public class skeletonW extends Enemy {
 
     public skeletonW(float x, float y) {
         super(x, y, SKELETONW_WIDTH,SKELETONW_HEIGHT, SKELETONW);
-        initHitBox((int) (30 * Juego.SCALE), (int) (30 * Juego.SCALE));
+        initHitBox(14, 25);
         initAttackBox();
     }
 
 	private void initAttackBox() {
-		attackBox = new Rectangle2D.Float(x, y, (int) (37 * Juego.SCALE), (int) (65 * Juego.SCALE));
-		attackBoxOffsetX = (int) (Juego.SCALE * 50);
+		attackBox = new Rectangle2D.Float(x, y, (int) (15 * Juego.SCALE), (int) (20 * Juego.SCALE));
+		attackBoxOffsetX = (int) (Juego.SCALE * 15);
 	}
 	public void update(int [][] lvlData,Jugador jugador){
         updateBehavior(lvlData,jugador);
@@ -32,8 +32,12 @@ public class skeletonW extends Enemy {
     }
     
 	private void updateAttackBox() {
-		attackBox.x=hitbox.x;
-		attackBox.y=hitbox.y-attackBoxOffsetX;
+		if (walkDir == LEFT) {
+			attackBox.x = hitbox.x - attackBoxOffsetX;
+		} else {
+			attackBox.x = hitbox.x + hitbox.width;
+		}
+		attackBox.y = hitbox.y;
 	}
 	private void updateBehavior(int[][] lvlData, Jugador jugador) {
 		if (firstUpdate)
