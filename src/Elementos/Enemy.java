@@ -118,7 +118,7 @@ protected void checkPlayerHit(Rectangle2D.Float attackBox, Jugador jugador) {
                 animInd=0;
 
                 switch (state) {
-                    case ATACAR1, GOLPE -> state = INACTIVO;
+                    case ATACAR1, ATAQUEC, GOLPE -> state = INACTIVO;
                     case MUERTO -> active = false;
                     }
             }
@@ -129,6 +129,11 @@ protected void checkPlayerHit(Rectangle2D.Float attackBox, Jugador jugador) {
         walkDir=RIGHT;
         else
         walkDir=LEFT;
+    }
+
+    /** Mapea estado → fila del sprite sheet. Sobreescribir en subclases con sprites nuevos. */
+    public int getAniRowOffset() {
+        return state;
     }
     public void resetEnemy(){
         hitbox.x=x;

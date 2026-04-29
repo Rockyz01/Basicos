@@ -14,13 +14,13 @@ public class enemigo11 extends Enemy {
 
     public enemigo11(float x, float y) {
         super(x, y, ENEMIGO11_WIDTH, ENEMIGO11_HEIGHT, ENEMIGO11);
-        initHitBox((int) (30 * Juego.SCALE), (int) (30 * Juego.SCALE));
+        initHitBox(14, 25);
         initAttackBox();
     }
 
 	private void initAttackBox() {
-		attackBox = new Rectangle2D.Float(x, y, (int) (37 * Juego.SCALE), (int) (65 * Juego.SCALE));
-		attackBoxOffsetX = (int) (Juego.SCALE * 50);
+		attackBox = new Rectangle2D.Float(x, y, (int) (20 * Juego.SCALE), (int) (25 * Juego.SCALE));
+		attackBoxOffsetX = (int) (Juego.SCALE * 20);
 	}
 	public void update(int [][] lvlData,Jugador jugador){
         updateBehavior(lvlData,jugador);
@@ -30,8 +30,12 @@ public class enemigo11 extends Enemy {
     }
     
 	private void updateAttackBox() {
-		attackBox.x=hitbox.x;
-		attackBox.y=hitbox.y-attackBoxOffsetX;
+		if (walkDir == LEFT) {
+			attackBox.x = hitbox.x - attackBoxOffsetX;
+		} else {
+			attackBox.x = hitbox.x + hitbox.width;
+		}
+		attackBox.y = hitbox.y;
 	}
 	private void updateBehavior(int[][] lvlData, Jugador jugador) {
 		if (firstUpdate)

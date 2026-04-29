@@ -34,6 +34,7 @@ public class Level {
     private ArrayList<enemigo10> enemigos10;
     private ArrayList<enemigo11> enemigos11;
     private ArrayList<enemigo12> enemigos12;
+    private ArrayList<TrolJefe>  trolJefes;
 
     private ArrayList<Potion> potions;
     private ArrayList<Spike> spikes;
@@ -93,6 +94,7 @@ public class Level {
         enemigos10 = MetodoAyuda.GetEnemigo10(img);
         enemigos11 = MetodoAyuda.GetEnemigo11(img);
         enemigos12 = MetodoAyuda.GetEnemigo12(img);
+        trolJefes  = MetodoAyuda.GetTrolJefes(img);
     }
 
     private void createLevelData() { lvlData = GetLevelData(img); }
@@ -123,4 +125,5 @@ public class Level {
     public ArrayList<enemigo10> getEnemigo10() { return enemigos10; }
     public ArrayList<enemigo11> getEnemigo11() { return enemigos11; }
     public ArrayList<enemigo12> getEnemigo12() { return enemigos12; }
+    public ArrayList<TrolJefe>  getTrolJefes()  { return trolJefes; }
 }

@@ -16,7 +16,8 @@ public class EnemyManager {
 	private BufferedImage[][] golemarr, skeletonwarr, skeletonayrr,
 	                          enemigo1arr, enemigo2arr, enemigo3arr, enemigo4arr,
 	                          enemigo5arr, enemigo6arr, enemigo7arr, enemigo8arr,
-	                          enemigo9arr, enemigo10arr, enemigo11arr, enemigo12arr;
+	                          enemigo9arr, enemigo10arr, enemigo11arr, enemigo12arr,
+	                          trolJefeArr;
 
 	// LEVEL 1
 	private ArrayList<Golem> golems = new ArrayList<>();
@@ -40,6 +41,7 @@ public class EnemyManager {
 	private ArrayList<enemigo10> enemigos10 = new ArrayList<>();
 	private ArrayList<enemigo11> enemigos11 = new ArrayList<>();
 	private ArrayList<enemigo12> enemigos12 = new ArrayList<>();
+	private ArrayList<TrolJefe>  trolJefes  = new ArrayList<>();
 
 	public EnemyManager(Playing playing) {
 		this.playing = playing;
@@ -62,6 +64,7 @@ public class EnemyManager {
 		enemigos10 = level.getEnemigo10();
 		enemigos11 = level.getEnemigo11();
 		enemigos12 = level.getEnemigo12();
+		trolJefes  = level.getTrolJefes();
 	}
 
 	public void update(int[][] lvlData, Jugador jugador) {
@@ -82,6 +85,7 @@ public class EnemyManager {
 		for (enemigo10 s : enemigos10) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 		for (enemigo11 s : enemigos11) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 		for (enemigo12 s : enemigos12) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
+		for (TrolJefe  s : trolJefes)  if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 
 		if (!isAnyActive)
 			playing.setLevelCompleted(true);
@@ -103,6 +107,7 @@ public class EnemyManager {
 		drawEnemigo10(g, xLvlOffset);
 		drawEnemigo11(g, xLvlOffset);
 		drawEnemigo12(g, xLvlOffset);
+		drawTrolJefe(g, xLvlOffset);
 	}
 
 	private void drawCrabs(Graphics g, int xLvlOffset) {
@@ -144,7 +149,7 @@ public class EnemyManager {
 	private void drawEnemigo1(Graphics g, int xLvlOffset) {
 		for (enemigo1 e : enemigos1)
 			if (e.isActive()) {
-				g.drawImage(enemigo1arr[e.getEnemyState()][e.getAniIndex()],
+				g.drawImage(enemigo1arr[e.getAniRowOffset()][e.getAniIndex()],
 					(int) e.getHitbox().x - xLvlOffset - ENEMIGO1_DRAWOFFSET_X + e.flipX(),
 					(int) e.getHitbox().y - ENEMIGO1_DRAWOFFSET_Y,
 					ENEMIGO1_WIDTH * e.flipW(), ENEMIGO1_HEIGHT, null);
@@ -156,7 +161,7 @@ public class EnemyManager {
 	private void drawEnemigo2(Graphics g, int xLvlOffset) {
 		for (enemigo2 e : enemigos2)
 			if (e.isActive()) {
-				g.drawImage(enemigo2arr[e.getEnemyState()][e.getAniIndex()],
+				g.drawImage(enemigo2arr[e.getAniRowOffset()][e.getAniIndex()],
 					(int) e.getHitbox().x - xLvlOffset - ENEMIGO2_DRAWOFFSET_X + e.flipX(),
 					(int) e.getHitbox().y - ENEMIGO2_DRAWOFFSET_Y,
 					ENEMIGO2_WIDTH * e.flipW(), ENEMIGO2_HEIGHT, null);
@@ -168,11 +173,11 @@ public class EnemyManager {
 	private void drawEnemigo3(Graphics g, int xLvlOffset) {
 		for (enemigo3 e : enemigos3)
 			if (e.isActive()) {
-				g.drawImage(enemigo3arr[e.getEnemyState()][e.getAniIndex()],
+				g.drawImage(enemigo3arr[e.getAniRowOffset()][e.getAniIndex()],
 					(int) e.getHitbox().x - xLvlOffset - ENEMIGO3_DRAWOFFSET_X + e.flipX(),
 					(int) e.getHitbox().y - ENEMIGO3_DRAWOFFSET_Y,
 					ENEMIGO3_WIDTH * e.flipW(), ENEMIGO3_HEIGHT, null);
-				e.drawAttackBox(g, xLvlOffset);
+				e.drawProyectiles(g, xLvlOffset);
 				e.drawHealthBar(g, xLvlOffset);
 			}
 	}
@@ -180,7 +185,7 @@ public class EnemyManager {
 	private void drawEnemigo4(Graphics g, int xLvlOffset) {
 		for (enemigo4 e : enemigos4)
 			if (e.isActive()) {
-				g.drawImage(enemigo4arr[e.getEnemyState()][e.getAniIndex()],
+				g.drawImage(enemigo4arr[e.getAniRowOffset()][e.getAniIndex()],
 					(int) e.getHitbox().x - xLvlOffset - ENEMIGO4_DRAWOFFSET_X + e.flipX(),
 					(int) e.getHitbox().y - ENEMIGO4_DRAWOFFSET_Y,
 					ENEMIGO4_WIDTH * e.flipW(), ENEMIGO4_HEIGHT, null);
@@ -192,7 +197,7 @@ public class EnemyManager {
 	private void drawEnemigo5(Graphics g, int xLvlOffset) {
 		for (enemigo5 e : enemigos5)
 			if (e.isActive()) {
-				g.drawImage(enemigo5arr[e.getEnemyState()][e.getAniIndex()],
+				g.drawImage(enemigo5arr[e.getAniRowOffset()][e.getAniIndex()],
 					(int) e.getHitbox().x - xLvlOffset - ENEMIGO5_DRAWOFFSET_X + e.flipX(),
 					(int) e.getHitbox().y - ENEMIGO5_DRAWOFFSET_Y,
 					ENEMIGO5_WIDTH * e.flipW(), ENEMIGO5_HEIGHT, null);
@@ -204,7 +209,7 @@ public class EnemyManager {
 	private void drawEnemigo6(Graphics g, int xLvlOffset) {
 		for (enemigo6 e : enemigos6)
 			if (e.isActive()) {
-				g.drawImage(enemigo6arr[e.getEnemyState()][e.getAniIndex()],
+				g.drawImage(enemigo6arr[e.getAniRowOffset()][e.getAniIndex()],
 					(int) e.getHitbox().x - xLvlOffset - ENEMIGO6_DRAWOFFSET_X + e.flipX(),
 					(int) e.getHitbox().y - ENEMIGO6_DRAWOFFSET_Y,
 					ENEMIGO6_WIDTH * e.flipW(), ENEMIGO6_HEIGHT, null);
@@ -282,6 +287,23 @@ public class EnemyManager {
 					ENEMIGO12_WIDTH * e.flipW(), ENEMIGO12_HEIGHT, null);
 				e.drawAttackBox(g, xLvlOffset);
 				e.drawHealthBar(g, xLvlOffset);
+			}
+	}
+
+	private void drawTrolJefe(Graphics g, int xLvlOffset) {
+		for (TrolJefe t : trolJefes)
+			if (t.isActive()) {
+				// Fila del sprite sheet según estado + frame de animación
+				int row = t.getAniRowOffset();
+				int col = t.getAniIndex();
+				if (trolJefeArr != null && trolJefeArr[row] != null && trolJefeArr[row][col] != null) {
+					g.drawImage(trolJefeArr[row][col],
+						(int) t.getHitbox().x - xLvlOffset - TROL_JEFE_DRAWOFFSET_X + t.flipX(),
+						(int) t.getHitbox().y - TROL_JEFE_DRAWOFFSET_Y,
+						TROL_JEFE_WIDTH * t.flipW(), TROL_JEFE_HEIGHT, null);
+				}
+				t.drawAttackBox(g, xLvlOffset);
+				t.drawHealthBar(g, xLvlOffset);
 			}
 	}
 
@@ -407,6 +429,14 @@ public class EnemyManager {
 					if (c.getEnemyState() == MUERTO) playing.increaseScore(100);
 					return;
 				}
+
+		for (TrolJefe c : trolJefes)
+			if (c.isActive() && c.getEnemyState() != MUERTO && c.getEnemyState() != GOLPE)
+				if (attackBox.intersects(c.getHitbox())) {
+					c.hurt(dmg);
+					if (c.getEnemyState() == MUERTO) playing.increaseScore(500); // Boss da más puntos
+					return;
+				}
 	}
 
 	private void loadEnemyImgs() {
@@ -416,18 +446,21 @@ public class EnemyManager {
 		golemarr     = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.GOLEM_SPRITE),     cols, rows, GOLEM_WIDTH_DEFAULT, GOLEM_HEIGHT_DEFAULT);
 		skeletonwarr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.SKELETONW_SPRITE), cols, rows, SKELETONW_WIDTH_DEFAULT, SKELETONW_HEIGHT_DEFAULT);
 		skeletonayrr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.SKELETONY_SPRITE), cols, rows, SKELETONY_WIDTH_DEFAULT, SKELETONY_HEIGHT_DEFAULT);
-		enemigo1arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO1_SPRITE),  cols, rows, ENEMIGO1_WIDTH_DEFAULT, ENEMIGO1_HEIGHT_DEFAULT);
-		enemigo2arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO2_SPRITE),  cols, rows, ENEMIGO2_WIDTH_DEFAULT, ENEMIGO2_HEIGTH_DEFAULT);
-		enemigo3arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO3_SPRITE),  cols, rows, ENEMIGO3_WIDTH_DEFAULT, ENEMIGO3_HEIGHT_DEFAULT);
-		enemigo4arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO4_SPRITE),  cols, rows, ENEMIGO4_WIDTH_DEFAULT, ENEMIGO4_HEIGHT_DEFAULT);
-		enemigo5arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO5_SPRITE),  cols, rows, ENEMIGO5_WIDTH_DEFAULT, ENEMIGO5_HEIGHT_DEFAULT);
-		enemigo6arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO6_SPRITE),  cols, rows, ENEMIGO6_WIDTH_DEFAULT, ENEMIGO6_HEIGHT_DEFAULT);
+		// Nuevos enemigos con sus dimensiones reales
+		enemigo1arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO1_SPRITE),  6, 5, ENEMIGO1_WIDTH_DEFAULT, ENEMIGO1_HEIGHT_DEFAULT);
+		enemigo2arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO2_SPRITE),  6, 5, ENEMIGO2_WIDTH_DEFAULT, ENEMIGO2_HEIGHT_DEFAULT);
+		enemigo3arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO3_SPRITE),  6, 9, ENEMIGO3_WIDTH_DEFAULT, ENEMIGO3_HEIGHT_DEFAULT);
+		enemigo4arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO4_SPRITE),  6, 5, ENEMIGO4_WIDTH_DEFAULT, ENEMIGO4_HEIGHT_DEFAULT);
+		enemigo5arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO5_SPRITE),  6, 5, ENEMIGO5_WIDTH_DEFAULT, ENEMIGO5_HEIGHT_DEFAULT);
+		enemigo6arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO6_SPRITE),  6, 5, ENEMIGO6_WIDTH_DEFAULT, ENEMIGO6_HEIGHT_DEFAULT);
 		enemigo7arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO7_SPRITE),  cols, rows, ENEMIGO7_WIDTH_DEFAULT, ENEMIGO7_HEIGHT_DEFAULT);
 		enemigo8arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO8_SPRITE),  cols, rows, ENEMIGO8_WIDTH_DEFAULT, ENEMIGO8_HEIGHT_DEFAULT);
 		enemigo9arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO9_SPRITE),  cols, rows, ENEMIGO9_WIDTH_DEFAULT, ENEMIGO9_HEIGHT_DEFAULT);
 		enemigo10arr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO10_SPRITE), cols, rows, ENEMIGO10_WIDTH_DEFAULT, ENEMIGO10_HEIGHT_DEFAULT);
 		enemigo11arr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO11_SPRITE), cols, rows, ENEMIGO11_WIDTH_DEFAULT, ENEMIGO11_HEIGHT_DEFAULT);
 		enemigo12arr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO12_SPRITE), cols, rows, ENEMIGO12_WIDTH_DEFAULT, ENEMIGO12_HEIGHT_DEFAULT);
+		// Trol Jefe: 10 columnas × 9 filas, frames 96×96
+		trolJefeArr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.TROL_JEFE_SPRITE), 10, 9, TROL_JEFE_WIDTH_DEFAULT, TROL_JEFE_HEIGHT_DEFAULT);
 	}
 
 	private BufferedImage[][] getImgArr(BufferedImage atlas, int xSize, int ySize, int spriteW, int spriteH) {
@@ -447,6 +480,25 @@ public class EnemyManager {
 		return tempArr;
 	}
 
+
+	public void killAllEnemies() {
+		for (Golem e : golems)         if (e.isActive()) e.hurt(99999);
+		for (skeletonW e : Skeletonw)  if (e.isActive()) e.hurt(99999);
+		for (skeletonY e : skeletony)  if (e.isActive()) e.hurt(99999);
+		for (enemigo1 e : enemigos1)   if (e.isActive()) e.hurt(99999);
+		for (enemigo2 e : enemigos2)   if (e.isActive()) e.hurt(99999);
+		for (enemigo3 e : enemigos3)   if (e.isActive()) e.hurt(99999);
+		for (enemigo4 e : enemigos4)   if (e.isActive()) e.hurt(99999);
+		for (enemigo5 e : enemigos5)   if (e.isActive()) e.hurt(99999);
+		for (enemigo6 e : enemigos6)   if (e.isActive()) e.hurt(99999);
+		for (enemigo7 e : enemigos7)   if (e.isActive()) e.hurt(99999);
+		for (enemigo8 e : enemigos8)   if (e.isActive()) e.hurt(99999);
+		for (enemigo9 e : enemigos9)   if (e.isActive()) e.hurt(99999);
+		for (enemigo10 e : enemigos10) if (e.isActive()) e.hurt(99999);
+		for (enemigo11 e : enemigos11) if (e.isActive()) e.hurt(99999);
+		for (enemigo12 e : enemigos12) if (e.isActive()) e.hurt(99999);
+		for (TrolJefe e : trolJefes)   if (e.isActive()) e.hurt(99999);
+	}
 	public void resetAllEnemies() {
 		for (Golem s : golems) s.resetEnemy();
 		for (skeletonW s : Skeletonw) s.resetEnemy();
@@ -463,5 +515,6 @@ public class EnemyManager {
 		for (enemigo10 s : enemigos10) s.resetEnemy();
 		for (enemigo11 s : enemigos11) s.resetEnemy();
 		for (enemigo12 s : enemigos12) s.resetEnemy();
+		for (TrolJefe  s : trolJefes)  s.resetEnemy();
 	}
 }
