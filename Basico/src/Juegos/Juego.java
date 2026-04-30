@@ -12,7 +12,7 @@ import ui.AudioOptions;
 
 public class Juego extends Thread {
     private VtaJuego vta;
-    private int FPS_SET = 120;
+    private int FPS_SET = 60;
     private int UPS_SET = 200;
     PanelJuego pan;
 
