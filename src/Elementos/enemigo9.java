@@ -17,8 +17,12 @@ public class enemigo9 extends Enemy {
 
     public enemigo9(float x, float y) {
         super(x, y, ENEMIGO9_WIDTH, ENEMIGO9_HEIGHT, ENEMIGO9);
+<<<<<<< HEAD
         walkSpeed = Juego.SCALE * 0.55f;
         initHitBox(30, 14);
+=======
+        initHitBox(14, 25);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         initAttackBox();
     }
 

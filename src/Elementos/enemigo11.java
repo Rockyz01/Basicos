@@ -20,6 +20,7 @@ public class enemigo11 extends Enemy {
 
     public enemigo11(float x, float y) {
         super(x, y, ENEMIGO11_WIDTH, ENEMIGO11_HEIGHT, ENEMIGO11);
+<<<<<<< HEAD
         walkSpeed = Juego.SCALE * 0.50f;
         attackDistance = Juego.TILES_SIZE * 1.2f;
         initHitBox(30, 26);
@@ -31,6 +32,34 @@ public class enemigo11 extends Enemy {
                 (int) (24 * Juego.SCALE), (int) (24 * Juego.SCALE));
         attackBoxOffsetX = (int) (Juego.SCALE * 28);
     }
+=======
+        initHitBox(14, 25);
+        initAttackBox();
+    }
+
+	private void initAttackBox() {
+		attackBox = new Rectangle2D.Float(x, y, (int) (20 * Juego.SCALE), (int) (25 * Juego.SCALE));
+		attackBoxOffsetX = (int) (Juego.SCALE * 20);
+	}
+	public void update(int [][] lvlData,Jugador jugador){
+        updateBehavior(lvlData,jugador);
+        updateAnimationTick();
+		updateAttackBox();
+        
+    }
+    
+	private void updateAttackBox() {
+		if (walkDir == LEFT) {
+			attackBox.x = hitbox.x - attackBoxOffsetX;
+		} else {
+			attackBox.x = hitbox.x + hitbox.width;
+		}
+		attackBox.y = hitbox.y;
+	}
+	private void updateBehavior(int[][] lvlData, Jugador jugador) {
+		if (firstUpdate)
+			firstUpdateCheck(lvlData);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
     @Override
     public void update(int[][] lvlData, Jugador jugador) {

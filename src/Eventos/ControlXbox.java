@@ -4,20 +4,31 @@ import Juegos.Juego;
 import gamestates.Gamestate;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileWriter;
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 import java.io.InputStreamReader;
 
 /**
  * ControlXbox — Lee el gamepad en Windows via PowerShell + XInput.
+<<<<<<< HEAD
  * Escribe el script a un archivo temporal para evitar problemas con
  * la política de ejecución y los heredocs inline.
+=======
+ * No requiere librerías externas. Usa un proceso PowerShell que hace
+ * polling del gamepad y envía el estado por stdout al juego.
+ * 
+ * En Linux usa /dev/input/jsX como antes.
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
  */
 public class ControlXbox implements Runnable {
 
     private final Juego juego;
     private volatile boolean running = false;
     private Thread hilo;
+<<<<<<< HEAD
     private File scriptTemporal;
 
     // Estado anterior para detectar cambios (flanco)
@@ -27,10 +38,21 @@ public class ControlXbox implements Runnable {
     // Script PowerShell que se escribe a disco
     private static final String PS_SCRIPT =
         "Add-Type -TypeDefinition @\"\n" +
+=======
+
+    // Estado anterior para detectar cambios
+    private boolean estLeft, estRight, estUp, estDown;
+    private boolean estA, estB, estX, estY, estStart;
+
+    // Script PowerShell inline que lee XInput cada 16ms y imprime estado
+    private static final String PS_SCRIPT =
+        "Add-Type -TypeDefinition @'\n" +
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         "using System;\n" +
         "using System.Runtime.InteropServices;\n" +
         "public class XInput {\n" +
         "    [StructLayout(LayoutKind.Sequential)] public struct GAMEPAD {\n" +
+<<<<<<< HEAD
         "        public ushort wButtons;\n" +
         "        public byte bLeftTrigger;\n" +
         "        public byte bRightTrigger;\n" +
@@ -64,12 +86,33 @@ public class ControlXbox implements Runnable {
         "    $result = [XInput]::XInputGetState(0, [ref]$s)\n" +
         "    if ($result -eq 0) {\n" +
         "        $b  = $s.Gamepad.wButtons\n" +
+=======
+        "        public ushort wButtons; public byte bLeftTrigger; public byte bRightTrigger;\n" +
+        "        public short sThumbLX; public short sThumbLY;\n" +
+        "        public short sThumbRX; public short sThumbRY;\n" +
+        "    }\n" +
+        "    [StructLayout(LayoutKind.Sequential)] public struct STATE {\n" +
+        "        public uint dwPacketNumber; public GAMEPAD Gamepad;\n" +
+        "    }\n" +
+        "    [DllImport(\"xinput1_4.dll\")] public static extern uint XInputGetState(uint dwUserIndex, ref STATE pState);\n" +
+        "    public const ushort DPAD_UP=1,DPAD_DOWN=2,DPAD_LEFT=4,DPAD_RIGHT=8;\n" +
+        "    public const ushort BTN_START=16,BTN_BACK=32,BTN_A=4096,BTN_B=8192,BTN_X=16384,BTN_Y=32768;\n" +
+        "    public const int DEAD=8000;\n" +
+        "}\n" +
+        "'@\n" +
+        "$prev = ''\n" +
+        "while($true) {\n" +
+        "    $s = New-Object XInput+STATE\n" +
+        "    if ([XInput]::XInputGetState(0, [ref]$s) -eq 0) {\n" +
+        "        $b = $s.Gamepad.wButtons\n" +
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         "        $lx = $s.Gamepad.sThumbLX\n" +
         "        $ly = $s.Gamepad.sThumbLY\n" +
         "        $left  = (($b -band [XInput]::DPAD_LEFT)  -ne 0) -or ($lx -lt -[XInput]::DEAD)\n" +
         "        $right = (($b -band [XInput]::DPAD_RIGHT) -ne 0) -or ($lx -gt  [XInput]::DEAD)\n" +
         "        $up    = (($b -band [XInput]::DPAD_UP)    -ne 0) -or ($ly -gt  [XInput]::DEAD)\n" +
         "        $down  = (($b -band [XInput]::DPAD_DOWN)  -ne 0) -or ($ly -lt -[XInput]::DEAD)\n" +
+<<<<<<< HEAD
         "        $a     = ($b -band [XInput]::BTN_A)     -ne 0\n" +
         "        $bBtn  = ($b -band [XInput]::BTN_B)     -ne 0\n" +
         "        $x     = ($b -band [XInput]::BTN_X)     -ne 0\n" +
@@ -82,6 +125,15 @@ public class ControlXbox implements Runnable {
         "            [Console]::Out.Flush()\n" +
         "            $prev = $line\n" +
         "        }\n" +
+=======
+        "        $a     = ($b -band [XInput]::BTN_A)  -ne 0\n" +
+        "        $bBtn  = ($b -band [XInput]::BTN_B)  -ne 0\n" +
+        "        $x     = ($b -band [XInput]::BTN_X)  -ne 0\n" +
+        "        $y     = ($b -band [XInput]::BTN_Y)  -ne 0\n" +
+        "        $start = ($b -band [XInput]::BTN_START) -ne 0\n" +
+        "        $line = \"$left,$right,$up,$down,$a,$bBtn,$x,$y,$start\"\n" +
+        "        if ($line -ne $prev) { Write-Output $line; $prev = $line }\n" +
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         "    }\n" +
         "    Start-Sleep -Milliseconds 16\n" +
         "}\n";
@@ -106,7 +158,10 @@ public class ControlXbox implements Runnable {
     public void stop() {
         running = false;
         if (hilo != null) hilo.interrupt();
+<<<<<<< HEAD
         borrarScriptTemporal();
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
     }
 
     @Override
@@ -120,6 +175,7 @@ public class ControlXbox implements Runnable {
             System.out.println("[ControlXbox] SO no soportado: " + os);
     }
 
+<<<<<<< HEAD
     // ── WINDOWS via PowerShell escrito a archivo temporal ────────────────────
     private void runWindows() {
         System.out.println("[ControlXbox] Iniciando gamepad via PowerShell/XInput...");
@@ -155,6 +211,18 @@ public class ControlXbox implements Runnable {
             errThread.setDaemon(true);
             errThread.start();
 
+=======
+    // ── WINDOWS via PowerShell + XInput ──────────────────────────────────────
+    private void runWindows() {
+        System.out.println("[ControlXbox] Iniciando lectura de gamepad via PowerShell/XInput...");
+        try {
+            ProcessBuilder pb = new ProcessBuilder(
+                "powershell", "-NoProfile", "-NonInteractive", "-Command", PS_SCRIPT
+            );
+            pb.redirectErrorStream(true);
+            Process proc = pb.start();
+
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
             BufferedReader reader = new BufferedReader(
                 new InputStreamReader(proc.getInputStream())
             );
@@ -165,6 +233,7 @@ public class ControlXbox implements Runnable {
                 if (linea.isEmpty()) continue;
 
                 // Formato: left,right,up,down,a,b,x,y,start
+<<<<<<< HEAD
                 String[] p = linea.split(",");
                 if (p.length < 10) continue;
 
@@ -180,10 +249,27 @@ public class ControlXbox implements Runnable {
                 boolean rt    = Boolean.parseBoolean(p[9]);
 
                 // Enviar solo cambios (flanco)
+=======
+                String[] partes = linea.split(",");
+                if (partes.length < 9) continue;
+
+                boolean left  = Boolean.parseBoolean(partes[0]);
+                boolean right = Boolean.parseBoolean(partes[1]);
+                boolean up    = Boolean.parseBoolean(partes[2]);
+                boolean down  = Boolean.parseBoolean(partes[3]);
+                boolean a     = Boolean.parseBoolean(partes[4]);
+                boolean b     = Boolean.parseBoolean(partes[5]);
+                boolean x     = Boolean.parseBoolean(partes[6]);
+                boolean y     = Boolean.parseBoolean(partes[7]);
+                boolean start = Boolean.parseBoolean(partes[8]);
+
+                // Detectar cambios y enviar al juego
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
                 if (left  != estLeft)  { teclaDirecta(KeyEvent.VK_A,      left);  estLeft  = left;  }
                 if (right != estRight) { teclaDirecta(KeyEvent.VK_D,      right); estRight = right; }
                 if (up    != estUp)    { teclaDirecta(KeyEvent.VK_W,      up);    estUp    = up;    }
                 if (down  != estDown)  { teclaDirecta(KeyEvent.VK_S,      down);  estDown  = down;  }
+<<<<<<< HEAD
                 if (a     != estA)     {
                     teclaDirecta(KeyEvent.VK_SPACE, a);
                     teclaDirecta(KeyEvent.VK_ENTER, a);
@@ -208,13 +294,35 @@ public class ControlXbox implements Runnable {
     private void borrarScriptTemporal() {
         if (scriptTemporal != null && scriptTemporal.exists())
             scriptTemporal.delete();
+=======
+                if (a     != estA)     { teclaDirecta(KeyEvent.VK_SPACE,  a);
+                                         teclaDirecta(KeyEvent.VK_ENTER,  a);     estA     = a;     }
+                if (x     != estX)     { teclaDirecta(KeyEvent.VK_Z,      x);     estX     = x;     }
+                if (y     != estY)     { teclaDirecta(KeyEvent.VK_X,      y);     estY     = y;     }
+                if ((b || start) != estStart) {
+                    boolean esc = b || start;
+                    teclaDirecta(KeyEvent.VK_ESCAPE, esc);
+                    estB = b; estStart = start;
+                }
+            }
+            proc.destroy();
+        } catch (Exception e) {
+            System.err.println("[ControlXbox] Error PowerShell: " + e.getMessage());
+        }
+        System.out.println("[ControlXbox] Proceso PowerShell terminado.");
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
     }
 
     // ── LINUX via /dev/input/jsX ──────────────────────────────────────────────
     private void runLinux() {
         java.io.File dev = null;
+<<<<<<< HEAD
         for (String path : new String[]{"/dev/input/js0", "/dev/input/js1", "/dev/input/js2"}) {
             java.io.File f = new java.io.File(path);
+=======
+        for (String p : new String[]{"/dev/input/js0", "/dev/input/js1", "/dev/input/js2"}) {
+            java.io.File f = new java.io.File(p);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
             if (f.exists() && f.canRead()) { dev = f; break; }
         }
         if (dev == null) {
@@ -275,7 +383,11 @@ public class ControlXbox implements Runnable {
         }
     }
 
+<<<<<<< HEAD
     // ── Envía eventos de teclado directamente al gamestate activo ─────────────
+=======
+    // ── Llamada directa al estado activo del juego ────────────────────────────
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
     private void teclaDirecta(int vkCode, boolean presionar) {
         if (juego == null) return;
         java.awt.Component panel = juego.getPanel();

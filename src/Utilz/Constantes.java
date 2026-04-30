@@ -87,12 +87,15 @@ public static final int ENEMIGO10  = 12;
 public static final int ENEMIGO11 = 13;
 public static final int ENEMIGO12  = 14;
 public static final int TROL_JEFE  = 15;
+<<<<<<< HEAD
 public static final int ENEMIGO13 = 16;
 public static final int ENEMIGO14 = 17;
 public static final int ENEMIGO15 = 18;
 public static final int BOSS_ANCIENT   = 19;
 public static final int BOSS_VIKING    = 20;
 public static final int BOSS_TOAD_KING = 21;
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
         //        ACTIONS
         public static final int INACTIVO=0;
@@ -118,29 +121,48 @@ public static final int BOSS_TOAD_KING = 21;
         public static final int SKELETONW_WIDTH = (int)(SKELETONW_WIDTH_DEFAULT*Juego.SCALE);
         public static final int SKELETONW_HEIGHT= (int)(SKELETONW_HEIGHT_DEFAULT*Juego.SCALE);
 
+<<<<<<< HEAD
         public static final int SKELETONW_DRAWOFFSET_X=(int)(34*Juego.SCALE);
         public static final int SKELETONW_DRAWOFFSET_Y=(int)(18*Juego.SCALE);
+=======
+        public static final int SKELETONW_DRAWOFFSET_X=(int)(10*Juego.SCALE);
+        public static final int SKELETONW_DRAWOFFSET_Y=(int)(25*Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
         public static final int SKELETONY_WIDTH_DEFAULT = 96;
         public static final int SKELETONY_HEIGHT_DEFAULT = 42;
         public static final int SKELETONY_WIDTH = (int)(SKELETONY_WIDTH_DEFAULT*Juego.SCALE);
         public static final int SKELETONY_HEIGHT= (int)(SKELETONY_HEIGHT_DEFAULT*Juego.SCALE);
 
+<<<<<<< HEAD
         public static final int SKELETONY_DRAWOFFSET_X=(int)(34*Juego.SCALE);
         public static final int SKELETONY_DRAWOFFSET_Y=(int)(18*Juego.SCALE);
+=======
+        public static final int SKELETONY_DRAWOFFSET_X=(int)(10*Juego.SCALE);
+        public static final int SKELETONY_DRAWOFFSET_Y=(int)(25*Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
         public static final int ENEMIGO1_WIDTH_DEFAULT  = 48;
         public static final int ENEMIGO1_HEIGHT_DEFAULT = 48;
         public static final int ENEMIGO1_WIDTH  = (int) (ENEMIGO1_WIDTH_DEFAULT  * Juego.SCALE);
         public static final int ENEMIGO1_HEIGHT = (int) (ENEMIGO1_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
         public static final int ENEMIGO1_DRAWOFFSET_X = (int) (17 * Juego.SCALE);
         public static final int ENEMIGO1_DRAWOFFSET_Y = (int) (13 * Juego.SCALE);
+=======
+        public static final int ENEMIGO1_DRAWOFFSET_X = (int) (14 * Juego.SCALE);
+        public static final int ENEMIGO1_DRAWOFFSET_Y = (int) (22 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         
         public static final int ENEMIGO2_WIDTH_DEFAULT  = 48;
         public static final int ENEMIGO2_HEIGHT_DEFAULT = 48;
         public static final int ENEMIGO2_WIDTH  = (int) (ENEMIGO2_WIDTH_DEFAULT  * Juego.SCALE);
         public static final int ENEMIGO2_HEIGHT = (int) (ENEMIGO2_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
         public static final int ENEMIGO2_DRAWOFFSET_X = (int) (0 * Juego.SCALE);
+=======
+        public static final int ENEMIGO2_DRAWOFFSET_X = (int) (12 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         public static final int ENEMIGO2_DRAWOFFSET_Y = (int) (18 * Juego.SCALE);
         
 // ENEMIGO3 - Magic_bear 72x72
@@ -148,32 +170,52 @@ public static final int ENEMIGO3_WIDTH_DEFAULT  = 72;
 public static final int ENEMIGO3_HEIGHT_DEFAULT = 72;
 public static final int ENEMIGO3_WIDTH  = (int) (ENEMIGO3_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO3_HEIGHT = (int) (ENEMIGO3_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO3_DRAWOFFSET_X = (int) (1 * Juego.SCALE);
 public static final int ENEMIGO3_DRAWOFFSET_Y = (int) (31 * Juego.SCALE);
+=======
+public static final int ENEMIGO3_DRAWOFFSET_X = (int) (18 * Juego.SCALE);
+public static final int ENEMIGO3_DRAWOFFSET_Y = (int) (26 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO4 - Northerner 48x48
 public static final int ENEMIGO4_WIDTH_DEFAULT  = 48;
 public static final int ENEMIGO4_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO4_WIDTH  = (int) (ENEMIGO4_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO4_HEIGHT = (int) (ENEMIGO4_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO4_DRAWOFFSET_X = (int) (20 * Juego.SCALE);
 public static final int ENEMIGO4_DRAWOFFSET_Y = (int) (13 * Juego.SCALE);
+=======
+public static final int ENEMIGO4_DRAWOFFSET_X = (int) (14 * Juego.SCALE);
+public static final int ENEMIGO4_DRAWOFFSET_Y = (int) (22 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO5 - Snowy 48x48
 public static final int ENEMIGO5_WIDTH_DEFAULT  = 48;
 public static final int ENEMIGO5_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO5_WIDTH  = (int) (ENEMIGO5_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO5_HEIGHT = (int) (ENEMIGO5_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO5_DRAWOFFSET_X = (int) (8 * Juego.SCALE);
 public static final int ENEMIGO5_DRAWOFFSET_Y = (int) (16 * Juego.SCALE);
+=======
+public static final int ENEMIGO5_DRAWOFFSET_X = (int) (14 * Juego.SCALE);
+public static final int ENEMIGO5_DRAWOFFSET_Y = (int) (22 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO6 - Spiked_slime 48x48
 public static final int ENEMIGO6_WIDTH_DEFAULT  = 48;
 public static final int ENEMIGO6_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO6_WIDTH  = (int) (ENEMIGO6_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO6_HEIGHT = (int) (ENEMIGO6_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO6_DRAWOFFSET_X = (int) (3 * Juego.SCALE);
 public static final int ENEMIGO6_DRAWOFFSET_Y = (int) (20 * Juego.SCALE);
+=======
+public static final int ENEMIGO6_DRAWOFFSET_X = (int) (14 * Juego.SCALE);
+public static final int ENEMIGO6_DRAWOFFSET_Y = (int) (22 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO7
 // ENEMIGO7 – Toad (2_Toad.png) 48x48, 6 cols x 5 rows
@@ -181,7 +223,11 @@ public static final int ENEMIGO7_WIDTH_DEFAULT  = 48;
 public static final int ENEMIGO7_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO7_WIDTH  = (int) (ENEMIGO7_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO7_HEIGHT = (int) (ENEMIGO7_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO7_DRAWOFFSET_X = (int) (0 * Juego.SCALE);
+=======
+public static final int ENEMIGO7_DRAWOFFSET_X = (int) (10 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 public static final int ENEMIGO7_DRAWOFFSET_Y = (int) (25 * Juego.SCALE);
 
 // ENEMIGO8
@@ -190,8 +236,13 @@ public static final int ENEMIGO8_WIDTH_DEFAULT  = 48;
 public static final int ENEMIGO8_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO8_WIDTH  = (int) (ENEMIGO8_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO8_HEIGHT = (int) (ENEMIGO8_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO8_DRAWOFFSET_X = (int) (24 * Juego.SCALE);
 public static final int ENEMIGO8_DRAWOFFSET_Y = (int) (29 * Juego.SCALE);
+=======
+public static final int ENEMIGO8_DRAWOFFSET_X = (int) (10 * Juego.SCALE);
+public static final int ENEMIGO8_DRAWOFFSET_Y = (int) (25 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO9
 // ENEMIGO9 – Snake (Snake.png) 48x48, 6 cols x 5 rows
@@ -199,8 +250,13 @@ public static final int ENEMIGO9_WIDTH_DEFAULT  = 48;
 public static final int ENEMIGO9_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO9_WIDTH  = (int) (ENEMIGO9_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO9_HEIGHT = (int) (ENEMIGO9_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO9_DRAWOFFSET_X = (int) (0 * Juego.SCALE);
 public static final int ENEMIGO9_DRAWOFFSET_Y = (int) (32 * Juego.SCALE);
+=======
+public static final int ENEMIGO9_DRAWOFFSET_X = (int) (10 * Juego.SCALE);
+public static final int ENEMIGO9_DRAWOFFSET_Y = (int) (25 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO10
 // ENEMIGO10 – Scorpio boss (Scorpio.png) 48x48, 4 cols x 5 rows
@@ -217,8 +273,13 @@ public static final int ENEMIGO11_WIDTH_DEFAULT  = 48;
 public static final int ENEMIGO11_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO11_WIDTH  = (int) (ENEMIGO11_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO11_HEIGHT = (int) (ENEMIGO11_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO11_DRAWOFFSET_X = (int) (8 * Juego.SCALE);
 public static final int ENEMIGO11_DRAWOFFSET_Y = (int) (16 * Juego.SCALE);
+=======
+public static final int ENEMIGO11_DRAWOFFSET_X = (int) (10 * Juego.SCALE);
+public static final int ENEMIGO11_DRAWOFFSET_Y = (int) (25 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO12
 // ENEMIGO12 – Dark Toad boss (2_Toad.png) 48x48, 6 cols x 5 rows
@@ -226,7 +287,11 @@ public static final int ENEMIGO12_WIDTH_DEFAULT  = 48;
 public static final int ENEMIGO12_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO12_WIDTH  = (int) (ENEMIGO12_WIDTH_DEFAULT  * Juego.SCALE);
 public static final int ENEMIGO12_HEIGHT = (int) (ENEMIGO12_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO12_DRAWOFFSET_X = (int) (0 * Juego.SCALE);
+=======
+public static final int ENEMIGO12_DRAWOFFSET_X = (int) (10 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 public static final int ENEMIGO12_DRAWOFFSET_Y = (int) (25 * Juego.SCALE);
 
 // ENEMIGO13 - Bug (Bug.png) 48x48, 4 cols x 5 rows
@@ -234,24 +299,39 @@ public static final int ENEMIGO13_WIDTH_DEFAULT = 48;
 public static final int ENEMIGO13_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO13_WIDTH = (int) (ENEMIGO13_WIDTH_DEFAULT * Juego.SCALE);
 public static final int ENEMIGO13_HEIGHT = (int) (ENEMIGO13_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO13_DRAWOFFSET_X = (int) (7 * Juego.SCALE);
 public static final int ENEMIGO13_DRAWOFFSET_Y = (int) (27 * Juego.SCALE);
+=======
+public static final int ENEMIGO13_DRAWOFFSET_X = (int) (10 * Juego.SCALE);
+public static final int ENEMIGO13_DRAWOFFSET_Y = (int) (25 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO14 - Goblin Melee (5_Goblin_melee.png) 48x48, 6 cols x 5 rows
 public static final int ENEMIGO14_WIDTH_DEFAULT = 48;
 public static final int ENEMIGO14_HEIGHT_DEFAULT = 48;
 public static final int ENEMIGO14_WIDTH = (int) (ENEMIGO14_WIDTH_DEFAULT * Juego.SCALE);
 public static final int ENEMIGO14_HEIGHT = (int) (ENEMIGO14_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO14_DRAWOFFSET_X = (int) (8 * Juego.SCALE);
 public static final int ENEMIGO14_DRAWOFFSET_Y = (int) (16 * Juego.SCALE);
+=======
+public static final int ENEMIGO14_DRAWOFFSET_X = (int) (10 * Juego.SCALE);
+public static final int ENEMIGO14_DRAWOFFSET_Y = (int) (25 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // ENEMIGO15 - Goblin Range (6_Goblin_range.png) 48x50, 6 cols x 5 rows
 public static final int ENEMIGO15_WIDTH_DEFAULT = 48;
 public static final int ENEMIGO15_HEIGHT_DEFAULT = 50;
 public static final int ENEMIGO15_WIDTH = (int) (ENEMIGO15_WIDTH_DEFAULT * Juego.SCALE);
 public static final int ENEMIGO15_HEIGHT = (int) (ENEMIGO15_HEIGHT_DEFAULT * Juego.SCALE);
+<<<<<<< HEAD
 public static final int ENEMIGO15_DRAWOFFSET_X = (int) (13 * Juego.SCALE);
 public static final int ENEMIGO15_DRAWOFFSET_Y = (int) (16 * Juego.SCALE);
+=======
+public static final int ENEMIGO15_DRAWOFFSET_X = (int) (10 * Juego.SCALE);
+public static final int ENEMIGO15_DRAWOFFSET_Y = (int) (25 * Juego.SCALE);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 // TROL_JEFE (Boss final - sprite 96x96 por frame, 10 cols x 9 rows)
 public static final int TROL_JEFE_WIDTH_DEFAULT  = 96;
@@ -260,6 +340,7 @@ public static final int TROL_JEFE_WIDTH  = (int) (TROL_JEFE_WIDTH_DEFAULT  * Jue
 public static final int TROL_JEFE_HEIGHT = (int) (TROL_JEFE_HEIGHT_DEFAULT * Juego.SCALE);
 public static final int TROL_JEFE_DRAWOFFSET_X = (int) (33 * Juego.SCALE);
 public static final int TROL_JEFE_DRAWOFFSET_Y = (int) (66 * Juego.SCALE);
+<<<<<<< HEAD
 
         // BOSS_ANCIENT (ancient_boss.png - 6 cols x 9 rows - frame 72x72)
         public static final int BOSS_ANCIENT_WIDTH_DEFAULT    = 72;
@@ -284,6 +365,8 @@ public static final int TROL_JEFE_DRAWOFFSET_Y = (int) (66 * Juego.SCALE);
         public static final int BOSS_TOAD_KING_HEIGHT = (int)(BOSS_TOAD_KING_HEIGHT_DEFAULT * Juego.SCALE);
         public static final int BOSS_TOAD_KING_DRAWOFFSET_X = (int)(20 * Juego.SCALE);
         public static final int BOSS_TOAD_KING_DRAWOFFSET_Y = (int)(40 * Juego.SCALE);
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
         public static int GetSpriteAmount(int enemy_type, int enemy_state) {
             switch (enemy_type) {
@@ -393,6 +476,7 @@ public static final int TROL_JEFE_DRAWOFFSET_Y = (int) (66 * Juego.SCALE);
                         case CAMINAR:
                         case CORRER:   return 4;
                         case ATAQUEC:
+<<<<<<< HEAD
                         case ATACAR1:  return 2;
                         case GOLPE:    return 4;
                         case MUERTO:   return 6;
@@ -525,6 +609,262 @@ public static final int TROL_JEFE_DRAWOFFSET_Y = (int) (66 * Juego.SCALE);
                     return 1;
             }
         }
+=======
+                            return 10;
+                        case ATACAR1:
+                            return 9;
+                        case ATACAR2:
+                            return 4;
+                        case ATACAR3:
+                            return 7;
+                        case GOLPE:
+                            return 5;
+                        case MUERTO:
+                            return 10;
+                    }        
+                        case SKELETONW:
+                            switch(enemy_state){
+                                case INACTIVO:
+                                return 6;
+                            case CAMINAR:
+                                return 8;
+                            case CORRER:
+                                return 8;
+                            case ATAQUEC:
+                                return 8;
+                            case ATACAR1:
+                                return 5;
+                            case ATACAR2:
+                                return 4;
+                            case ATACAR3:
+                                return 7;
+                            case GOLPE:
+                                return 4;
+                            case MUERTO:
+                                return 7;
+                            }
+                        case SKELETONY:
+                            switch(enemy_state){
+                                case INACTIVO:
+                                return 6;
+                            case CAMINAR:
+                                return 8;
+                            case CORRER:
+                                return 8;
+                            case ATAQUEC:
+                                return 8;
+                            case ATACAR1:
+                                return 5;
+                            case ATACAR2:
+                                return 4;
+                            case ATACAR3:
+                                return 7;
+                            case GOLPE:
+                                return 4;
+                            case MUERTO:
+                                return 7;
+                            }    
+                                                case ENEMIGO1: // Elkman
+                            switch (enemy_state) {
+                                case INACTIVO: return 6;
+                                case CAMINAR:  return 5;
+                                case CORRER:   return 5;
+                                case ATACAR1:  return 4;
+                                case GOLPE:    return 4;
+                                case MUERTO:   return 2;
+                            }
+                                                case ENEMIGO2: // Frost_golem
+                            switch (enemy_state) {
+                                case INACTIVO: return 4;
+                                case CAMINAR:  return 6;
+                                case CORRER:   return 6;
+                                case ATACAR1:  return 4;
+                                case GOLPE:    return 4;
+                                case MUERTO:   return 2;
+                            }
+                                                case ENEMIGO3: // Magic_bear (ataque a distancia)
+                            switch (enemy_state) {
+                                case INACTIVO: return 6;
+                                case CAMINAR:  return 6;
+                                case CORRER:   return 6;
+                                case ATACAR1:  return 5;
+                                case ATAQUEC:  return 4;
+                                case GOLPE:    return 4;
+                                case MUERTO:   return 2;
+                            }
+                                                case ENEMIGO4: // Northerner
+                            switch (enemy_state) {
+                                case INACTIVO: return 6;
+                                case CAMINAR:  return 5;
+                                case CORRER:   return 6;
+                                case ATACAR1:  return 4;
+                                case GOLPE:    return 4;
+                                case MUERTO:   return 2;
+                            }
+                                                case ENEMIGO5: // Snowy
+                            switch (enemy_state) {
+                                case INACTIVO: return 4;
+                                case CAMINAR:  return 6;
+                                case CORRER:   return 6;
+                                case ATACAR1:  return 4;
+                                case GOLPE:    return 4;
+                                case MUERTO:   return 2;
+                            }
+                                                case ENEMIGO6: // Spiked_slime
+                            switch (enemy_state) {
+                                case INACTIVO: return 5;
+                                case CAMINAR:  return 4;
+                                case CORRER:   return 4;
+                                case ATACAR1:  return 4;
+                                case GOLPE:    return 4;
+                                case MUERTO:   return 2;
+                            }
+                        case ENEMIGO7:
+                            switch (enemy_state) {
+                                case INACTIVO:
+                                return 6;
+                            case CAMINAR:
+                                return 8;
+                            case CORRER:
+                                return 8;
+                            case ATAQUEC:
+                                return 8;
+                            case ATACAR1:
+                                return 5;
+                            case ATACAR2:
+                                return 4;
+                            case ATACAR3:
+                                return 7;
+                            case GOLPE:
+                                return 4;
+                            case MUERTO:
+                                return 7;
+                            }
+        
+                        case ENEMIGO8:
+                            switch (enemy_state) {
+                                case INACTIVO:
+                                return 6;
+                            case CAMINAR:
+                                return 8;
+                            case CORRER:
+                                return 8;
+                            case ATAQUEC:
+                                return 8;
+                            case ATACAR1:
+                                return 5;
+                            case ATACAR2:
+                                return 4;
+                            case ATACAR3:
+                                return 7;
+                            case GOLPE:
+                                return 4;
+                            case MUERTO:
+                                return 7;
+                            }
+        
+                        case ENEMIGO9:
+                            switch (enemy_state) {
+                                case INACTIVO:
+                                return 6;
+                            case CAMINAR:
+                                return 8;
+                            case CORRER:
+                                return 8;
+                            case ATAQUEC:
+                                return 8;
+                            case ATACAR1:
+                                return 5;
+                            case ATACAR2:
+                                return 4;
+                            case ATACAR3:
+                                return 7;
+                            case GOLPE:
+                                return 4;
+                            case MUERTO:
+                                return 7;
+                            }
+        
+                        case ENEMIGO10:
+                            switch (enemy_state) {
+                                case INACTIVO:
+                                return 6;
+                            case CAMINAR:
+                                return 8;
+                            case CORRER:
+                                return 8;
+                            case ATAQUEC:
+                                return 8;
+                            case ATACAR1:
+                                return 5;
+                            case ATACAR2:
+                                return 4;
+                            case ATACAR3:
+                                return 7;
+                            case GOLPE:
+                                return 4;
+                            case MUERTO:
+                                return 7;
+                            }
+        
+                        case ENEMIGO11:
+                            switch (enemy_state) {
+                                case INACTIVO:
+                                return 6;
+                            case CAMINAR:
+                                return 8;
+                            case CORRER:
+                                return 8;
+                            case ATAQUEC:
+                                return 8;
+                            case ATACAR1:
+                                return 5;
+                            case ATACAR2:
+                                return 4;
+                            case ATACAR3:
+                                return 7;
+                            case GOLPE:
+                                return 4;
+                            case MUERTO:
+                                return 7;
+                            }
+                        case ENEMIGO12:
+                            switch (enemy_state) {
+                                case INACTIVO:
+                                return 6;
+                            case CAMINAR:
+                                return 8;
+                            case CORRER:
+                                return 8;
+                            case ATAQUEC:
+                                return 8;
+                            case ATACAR1:
+                                return 5;
+                            case ATACAR2:
+                                return 4;
+                            case ATACAR3:
+                                return 7;
+                            case GOLPE:
+                                return 4;
+                            case MUERTO:
+                                return 7;
+                            }
+                            break;
+                        case TROL_JEFE:
+                            switch (enemy_state) {
+                                case INACTIVO: return 6;
+                                case CAMINAR:  return 4;
+                                case CORRER:   return 5;
+                                case ATACAR1:  return 5;
+                                case ATAQUEC:  return 5;
+                                case GOLPE:    return 2;
+                                case MUERTO:   return 2;
+                            }
+                            break;
+                        }
+                    return 0;
+                }
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 public static int GetMaxHealth(int enemyType) {
     switch (enemyType) {
@@ -543,6 +883,7 @@ public static int GetMaxHealth(int enemyType) {
         case ENEMIGO10: return 100; // boss
         case ENEMIGO11: return 100; // boss
         case ENEMIGO12: return 120; // boss final
+<<<<<<< HEAD
         case ENEMIGO13: return 50;
         case ENEMIGO14: return 60;
         case ENEMIGO15: return 55;
@@ -550,6 +891,9 @@ public static int GetMaxHealth(int enemyType) {
         case BOSS_ANCIENT:   return 250;
         case BOSS_VIKING:    return 280;
         case BOSS_TOAD_KING: return 220;
+=======
+        case TROL_JEFE: return 300; // Trol Jefe - boss épico
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         default: return 50;
     }
 }
@@ -586,6 +930,7 @@ public static int GetMaxHealth(int enemyType) {
             return 10;
         case ENEMIGO12:
             return 10;
+<<<<<<< HEAD
         case ENEMIGO13: return 8;
         case ENEMIGO14: return 12;
         case ENEMIGO15: return 10;
@@ -594,6 +939,10 @@ public static int GetMaxHealth(int enemyType) {
         case BOSS_ANCIENT:   return 20;
         case BOSS_VIKING:    return 22;
         case BOSS_TOAD_KING: return 18;
+=======
+        case TROL_JEFE:
+            return 25; // Boss hace más daño
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         default:
             return 0;
     }

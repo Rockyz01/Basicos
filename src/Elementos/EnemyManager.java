@@ -17,9 +17,13 @@ public class EnemyManager {
 	                          enemigo1arr, enemigo2arr, enemigo3arr, enemigo4arr,
 	                          enemigo5arr, enemigo6arr, enemigo7arr, enemigo8arr,
 	                          enemigo9arr, enemigo10arr, enemigo11arr, enemigo12arr,
+<<<<<<< HEAD
 	                          enemigo13arr, enemigo14arr, enemigo15arr,
 	                          trolJefeArr,
 	                          bossAncientArr, bossVikingArr, bossToadKingArr;
+=======
+	                          trolJefeArr;
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 	// LEVEL 1
 	private ArrayList<Golem> golems = new ArrayList<>();
@@ -43,6 +47,7 @@ public class EnemyManager {
 	private ArrayList<enemigo10> enemigos10 = new ArrayList<>();
 	private ArrayList<enemigo11> enemigos11 = new ArrayList<>();
 	private ArrayList<enemigo12> enemigos12 = new ArrayList<>();
+<<<<<<< HEAD
 	private ArrayList<enemigo13> enemigos13 = new ArrayList<>();
 	private ArrayList<enemigo14> enemigos14 = new ArrayList<>();
 	private ArrayList<enemigo15> enemigos15 = new ArrayList<>();
@@ -50,6 +55,9 @@ public class EnemyManager {
 	private ArrayList<BossAncient>   bossAncients  = new ArrayList<>();
 	private ArrayList<BossViking>    bossVikings   = new ArrayList<>();
 	private ArrayList<BossToadKing>  bossToadKings = new ArrayList<>();
+=======
+	private ArrayList<TrolJefe>  trolJefes  = new ArrayList<>();
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 	public EnemyManager(Playing playing) {
 		this.playing = playing;
@@ -72,6 +80,7 @@ public class EnemyManager {
 		enemigos10 = level.getEnemigo10();
 		enemigos11 = level.getEnemigo11();
 		enemigos12 = level.getEnemigo12();
+<<<<<<< HEAD
 		enemigos13 = level.getEnemigo13();
 		enemigos14 = level.getEnemigo14();
 		enemigos15 = level.getEnemigo15();
@@ -79,6 +88,9 @@ public class EnemyManager {
 		bossAncients  = level.getBossAncients();
 		bossVikings   = level.getBossVikings();
 		bossToadKings = level.getBossToadKings();
+=======
+		trolJefes  = level.getTrolJefes();
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 	}
 
 	public void update(int[][] lvlData, Jugador jugador) {
@@ -99,6 +111,7 @@ public class EnemyManager {
 		for (enemigo10 s : enemigos10) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 		for (enemigo11 s : enemigos11) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 		for (enemigo12 s : enemigos12) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
+<<<<<<< HEAD
 		for (enemigo13 s : enemigos13) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 		for (enemigo14 s : enemigos14) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 		for (enemigo15 s : enemigos15) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
@@ -106,6 +119,9 @@ public class EnemyManager {
 		for (BossAncient  s : bossAncients)  if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 		for (BossViking   s : bossVikings)   if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
 		for (BossToadKing s : bossToadKings) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
+=======
+		for (TrolJefe  s : trolJefes)  if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; }
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 		if (!isAnyActive)
 			playing.setLevelCompleted(true);
@@ -127,6 +143,7 @@ public class EnemyManager {
 		drawEnemigo10(g, xLvlOffset);
 		drawEnemigo11(g, xLvlOffset);
 		drawEnemigo12(g, xLvlOffset);
+<<<<<<< HEAD
 		drawEnemigo13(g, xLvlOffset);
 		drawEnemigo14(g, xLvlOffset);
 		drawEnemigo15(g, xLvlOffset);
@@ -134,6 +151,9 @@ public class EnemyManager {
 		drawBossAncient(g, xLvlOffset);
 		drawBossViking(g, xLvlOffset);
 		drawBossToadKing(g, xLvlOffset);
+=======
+		drawTrolJefe(g, xLvlOffset);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 	}
 
 	private void drawCrabs(Graphics g, int xLvlOffset) {
@@ -326,6 +346,7 @@ public class EnemyManager {
 			}
 	}
 
+<<<<<<< HEAD
 
 	private void drawEnemigo13(Graphics g, int xLvlOffset) {
 		for (enemigo13 e : enemigos13)
@@ -363,6 +384,8 @@ public class EnemyManager {
 			}
 	}
 
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 	private void drawTrolJefe(Graphics g, int xLvlOffset) {
 		for (TrolJefe t : trolJefes)
 			if (t.isActive()) {
@@ -380,6 +403,7 @@ public class EnemyManager {
 			}
 	}
 
+<<<<<<< HEAD
 	private void drawBossAncient(Graphics g, int xLvlOffset) {
 		for (BossAncient t : bossAncients)
 			if (t.isActive()) {
@@ -431,6 +455,8 @@ public class EnemyManager {
 			}
 	}
 
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 	public void checkEnemyHit(Rectangle2D.Float attackBox) {
 		int dmg = playing.getPlayer().getDamage();
 
@@ -561,6 +587,7 @@ public class EnemyManager {
 					if (c.getEnemyState() == MUERTO) playing.increaseScore(500); // Boss da más puntos
 					return;
 				}
+<<<<<<< HEAD
 
 		for (enemigo13 c : enemigos13)
 			if (c.isActive() && c.getEnemyState() != MUERTO && c.getEnemyState() != GOLPE)
@@ -609,6 +636,8 @@ public class EnemyManager {
 					if (c.getEnemyState() == MUERTO) playing.increaseScore(400);
 					return;
 				}
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 	}
 
 	private void loadEnemyImgs() {
@@ -625,6 +654,7 @@ public class EnemyManager {
 		enemigo4arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO4_SPRITE),  6, 5, ENEMIGO4_WIDTH_DEFAULT, ENEMIGO4_HEIGHT_DEFAULT);
 		enemigo5arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO5_SPRITE),  6, 5, ENEMIGO5_WIDTH_DEFAULT, ENEMIGO5_HEIGHT_DEFAULT);
 		enemigo6arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO6_SPRITE),  6, 5, ENEMIGO6_WIDTH_DEFAULT, ENEMIGO6_HEIGHT_DEFAULT);
+<<<<<<< HEAD
 		enemigo7arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO7_SPRITE),  6, 5, ENEMIGO7_WIDTH_DEFAULT,  ENEMIGO7_HEIGHT_DEFAULT);  // 2_Toad   288x240
 		enemigo8arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO8_SPRITE),  4, 5, ENEMIGO8_WIDTH_DEFAULT,  ENEMIGO8_HEIGHT_DEFAULT);  // 1_Slime  192x240
 		enemigo9arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO9_SPRITE),  6, 5, ENEMIGO9_WIDTH_DEFAULT,  ENEMIGO9_HEIGHT_DEFAULT);  // Snake    288x240
@@ -639,6 +669,16 @@ public class EnemyManager {
 		bossAncientArr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.BOSS_ANCIENT_SPRITE),   6, 9, BOSS_ANCIENT_WIDTH_DEFAULT,   BOSS_ANCIENT_HEIGHT_DEFAULT);
 		bossVikingArr   = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.BOSS_VIKING_SPRITE),    6, 9, BOSS_VIKING_WIDTH_DEFAULT,    BOSS_VIKING_HEIGHT_DEFAULT);
 		bossToadKingArr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.BOSS_TOAD_KING_SPRITE), 6, 9, BOSS_TOAD_KING_WIDTH_DEFAULT, BOSS_TOAD_KING_HEIGHT_DEFAULT);
+=======
+		enemigo7arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO7_SPRITE),  cols, rows, ENEMIGO7_WIDTH_DEFAULT, ENEMIGO7_HEIGHT_DEFAULT);
+		enemigo8arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO8_SPRITE),  cols, rows, ENEMIGO8_WIDTH_DEFAULT, ENEMIGO8_HEIGHT_DEFAULT);
+		enemigo9arr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO9_SPRITE),  cols, rows, ENEMIGO9_WIDTH_DEFAULT, ENEMIGO9_HEIGHT_DEFAULT);
+		enemigo10arr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO10_SPRITE), cols, rows, ENEMIGO10_WIDTH_DEFAULT, ENEMIGO10_HEIGHT_DEFAULT);
+		enemigo11arr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO11_SPRITE), cols, rows, ENEMIGO11_WIDTH_DEFAULT, ENEMIGO11_HEIGHT_DEFAULT);
+		enemigo12arr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.ENEMIGO12_SPRITE), cols, rows, ENEMIGO12_WIDTH_DEFAULT, ENEMIGO12_HEIGHT_DEFAULT);
+		// Trol Jefe: 10 columnas × 9 filas, frames 96×96
+		trolJefeArr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.TROL_JEFE_SPRITE), 10, 9, TROL_JEFE_WIDTH_DEFAULT, TROL_JEFE_HEIGHT_DEFAULT);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 	}
 
 	private BufferedImage[][] getImgArr(BufferedImage atlas, int xSize, int ySize, int spriteW, int spriteH) {
@@ -675,6 +715,7 @@ public class EnemyManager {
 		for (enemigo10 e : enemigos10) if (e.isActive()) e.hurt(99999);
 		for (enemigo11 e : enemigos11) if (e.isActive()) e.hurt(99999);
 		for (enemigo12 e : enemigos12) if (e.isActive()) e.hurt(99999);
+<<<<<<< HEAD
 		for (enemigo13 e : enemigos13) if (e.isActive()) e.hurt(99999);
 		for (enemigo14 e : enemigos14) if (e.isActive()) e.hurt(99999);
 		for (enemigo15 e : enemigos15) if (e.isActive()) e.hurt(99999);
@@ -682,6 +723,9 @@ public class EnemyManager {
 		for (BossAncient  e : bossAncients)  if (e.isActive()) e.hurt(99999);
 		for (BossViking   e : bossVikings)   if (e.isActive()) e.hurt(99999);
 		for (BossToadKing e : bossToadKings) if (e.isActive()) e.hurt(99999);
+=======
+		for (TrolJefe e : trolJefes)   if (e.isActive()) e.hurt(99999);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 	}
 	public void resetAllEnemies() {
 		for (Golem s : golems) s.resetEnemy();
@@ -699,6 +743,7 @@ public class EnemyManager {
 		for (enemigo10 s : enemigos10) s.resetEnemy();
 		for (enemigo11 s : enemigos11) s.resetEnemy();
 		for (enemigo12 s : enemigos12) s.resetEnemy();
+<<<<<<< HEAD
 		for (enemigo13 s : enemigos13) s.resetEnemy();
 		for (enemigo14 s : enemigos14) s.resetEnemy();
 		for (enemigo15 s : enemigos15) s.resetEnemy();
@@ -706,5 +751,8 @@ public class EnemyManager {
 		for (BossAncient  s : bossAncients)  s.resetEnemy();
 		for (BossViking   s : bossVikings)   s.resetEnemy();
 		for (BossToadKing s : bossToadKings) s.resetEnemy();
+=======
+		for (TrolJefe  s : trolJefes)  s.resetEnemy();
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 	}
 }

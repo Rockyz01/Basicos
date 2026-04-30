@@ -35,12 +35,15 @@ public class Level {
     private ArrayList<enemigo11> enemigos11;
     private ArrayList<enemigo12> enemigos12;
     private ArrayList<TrolJefe>  trolJefes;
+<<<<<<< HEAD
     private ArrayList<BossAncient>   bossAncients;
     private ArrayList<BossViking>    bossVikings;
     private ArrayList<BossToadKing>  bossToadKings;
     private ArrayList<enemigo13> enemigos13;
     private ArrayList<enemigo14> enemigos14;
     private ArrayList<enemigo15> enemigos15;
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
     private ArrayList<Potion> potions;
     private ArrayList<Spike> spikes;
@@ -100,6 +103,7 @@ public class Level {
         enemigos10 = MetodoAyuda.GetEnemigo10(img);
         enemigos11 = MetodoAyuda.GetEnemigo11(img);
         enemigos12 = MetodoAyuda.GetEnemigo12(img);
+<<<<<<< HEAD
         enemigos13 = MetodoAyuda.GetEnemigo13(img);
         enemigos14 = MetodoAyuda.GetEnemigo14(img);
         enemigos15 = MetodoAyuda.GetEnemigo15(img);
@@ -107,6 +111,9 @@ public class Level {
         bossAncients  = MetodoAyuda.GetBossAncients(img);
         bossVikings   = MetodoAyuda.GetBossVikings(img);
         bossToadKings = MetodoAyuda.GetBossToadKings(img);
+=======
+        trolJefes  = MetodoAyuda.GetTrolJefes(img);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
     }
 
     private void createLevelData() { lvlData = GetLevelData(img); }
@@ -137,6 +144,7 @@ public class Level {
     public ArrayList<enemigo10> getEnemigo10() { return enemigos10; }
     public ArrayList<enemigo11> getEnemigo11() { return enemigos11; }
     public ArrayList<enemigo12> getEnemigo12() { return enemigos12; }
+<<<<<<< HEAD
     public ArrayList<enemigo13> getEnemigo13() { return enemigos13; }
     public ArrayList<enemigo14> getEnemigo14() { return enemigos14; }
     public ArrayList<enemigo15> getEnemigo15() { return enemigos15; }
@@ -288,4 +296,7 @@ public class Level {
         }
         return (bestSpacious >= 0) ? bestSpacious : bestAny;
     }
+=======
+    public ArrayList<TrolJefe>  getTrolJefes()  { return trolJefes; }
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 }

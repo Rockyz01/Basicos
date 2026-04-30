@@ -16,7 +16,11 @@ public class enemigo7 extends Enemy {
 
     public enemigo7(float x, float y) {
         super(x, y, ENEMIGO7_WIDTH, ENEMIGO7_HEIGHT, ENEMIGO7);
+<<<<<<< HEAD
         initHitBox(28, 20);
+=======
+        initHitBox(14, 25);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         initAttackBox();
     }
 

@@ -17,7 +17,11 @@ public class skeletonY extends Enemy {
 
     public skeletonY(float x, float y) {
         super(x, y, SKELETONY_WIDTH,SKELETONY_HEIGHT, SKELETONY);
+<<<<<<< HEAD
         initHitBox(16, 20);
+=======
+        initHitBox(14, 25);
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
         initAttackBox();
     }
 

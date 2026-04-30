@@ -251,9 +251,15 @@ public class Playing extends state implements Statemethods {
                 case KeyEvent.VK_D: player.setRight(true); break;
                 case KeyEvent.VK_SPACE: player.setJump(true); break;
                 case KeyEvent.VK_ESCAPE: paused = !paused; break;
+<<<<<<< HEAD
                 // Ataques con O y P
                 case KeyEvent.VK_O: player.setAttacking(true); break;
                 case KeyEvent.VK_P: player.powerAttack(); break;
+=======
+                // Control Xbox: Z = ataque normal, X = ataque fuerte
+                case KeyEvent.VK_Z: player.setAttacking(true); break;
+                case KeyEvent.VK_X: player.powerAttack(); break;
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
                 case KeyEvent.VK_K: enemyManager.killAllEnemies(); break; // DEBUG: matar todos
             }
     }
@@ -265,6 +271,7 @@ public class Playing extends state implements Statemethods {
                 case KeyEvent.VK_A: player.setLeft(false); break;
                 case KeyEvent.VK_D: player.setRight(false); break;
                 case KeyEvent.VK_SPACE: player.setJump(false); break;
+                case KeyEvent.VK_Z: player.setAttacking(false); break;
             }
     }
 

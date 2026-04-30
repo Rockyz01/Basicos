@@ -55,6 +55,7 @@ public class LoadSave {
     public static final String ENEMIGO4_SPRITE = "northerner_sprite.png";
     public static final String ENEMIGO5_SPRITE = "snowy_sprite.png";
     public static final String ENEMIGO6_SPRITE = "spiked_slime_sprite.png";
+<<<<<<< HEAD
     public static final String ENEMIGO7_SPRITE  = "2_Toad.png";
     public static final String ENEMIGO8_SPRITE  = "1_Slime.png";
     public static final String ENEMIGO9_SPRITE  = "Snake.png";
@@ -68,6 +69,15 @@ public class LoadSave {
     public static final String ENEMIGO13_SPRITE = "Bug.png";
     public static final String ENEMIGO14_SPRITE = "5_Goblin_melee.png";
     public static final String ENEMIGO15_SPRITE = "6_Goblin_range.png";
+=======
+    public static final String ENEMIGO7_SPRITE = "enemy_sprite.png";
+    public static final String ENEMIGO8_SPRITE = "enemy_sprite.png";
+    public static final String ENEMIGO9_SPRITE = "enemy_sprite.png";
+    public static final String ENEMIGO10_SPRITE = "enemy_sprite.png";
+    public static final String ENEMIGO11_SPRITE = "enemy_sprite3.png";
+    public static final String ENEMIGO12_SPRITE = "enemy_sprite.png";
+    public static final String TROL_JEFE_SPRITE  = "trol_jefe_sprite.png";
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 
 
     

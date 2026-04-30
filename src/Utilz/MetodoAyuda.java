@@ -2,9 +2,12 @@ package Utilz;
 
 import Elementos.Golem;
 import Elementos.TrolJefe;
+<<<<<<< HEAD
 import Elementos.BossToadKing;
 import Elementos.BossViking;
 import Elementos.BossAncient;
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 import Elementos.enemigo1;
 import Elementos.enemigo10;
 import Elementos.enemigo11;
@@ -405,6 +408,7 @@ public class MetodoAyuda {
         return list;
     }
 
+<<<<<<< HEAD
 
     public static ArrayList<enemigo13> GetEnemigo13(BufferedImage img) {
         ArrayList<enemigo13> list = new ArrayList<>();
@@ -439,6 +443,8 @@ public class MetodoAyuda {
         return list;
     }
 
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
     public static ArrayList<TrolJefe> GetTrolJefes(BufferedImage img) {
         ArrayList<TrolJefe> list = new ArrayList<>();
         for (int j = 0; j < img.getHeight(); j++)
@@ -449,6 +455,7 @@ public class MetodoAyuda {
             }
         return list;
     }
+<<<<<<< HEAD
 
     public static ArrayList<BossAncient> GetBossAncients(BufferedImage img) {
         ArrayList<BossAncient> list = new ArrayList<>();
@@ -482,4 +489,6 @@ public class MetodoAyuda {
             }
         return list;
     }
+=======
+>>>>>>> 2c7cdeebd7e2c98430828ddceff33cfb310a32da
 }
