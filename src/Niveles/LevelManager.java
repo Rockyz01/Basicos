@@ -58,8 +58,17 @@ public class LevelManager {
 
     private void buildAllLevels() {
         BufferedImage[] allLevels = LoadSave.GetAllLevels();
-        for (BufferedImage img : allLevels)
-            levels.add(new Level(img));
+        for (int i = 0; i < allLevels.length; i++) {
+            Level lvl = new Level(allLevels[i]);
+            // Modo prueba: el primer nivel tiene 1 instancia de cada enemigo y boss;
+            // los demás van vacíos.
+            if (i == 0) {
+                lvl.keepOneOfEachEnemyAndBoss();
+            } else {
+                lvl.clearAllEnemiesAndBosses();
+            }
+            levels.add(lvl);
+        }
     }
 
     public void loadNextLevel(int indexOverride) {

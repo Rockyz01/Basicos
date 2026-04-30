@@ -1,10 +1,17 @@
 package Utilz;
 
 import Elementos.Golem;
+import Elementos.TrolJefe;
+import Elementos.BossToadKing;
+import Elementos.BossViking;
+import Elementos.BossAncient;
 import Elementos.enemigo1;
 import Elementos.enemigo10;
 import Elementos.enemigo11;
 import Elementos.enemigo12;
+import Elementos.enemigo13;
+import Elementos.enemigo14;
+import Elementos.enemigo15;
 import Elementos.enemigo2;
 import Elementos.enemigo3;
 import Elementos.enemigo4;
@@ -42,6 +49,11 @@ public class MetodoAyuda {
         return false;
     }
 
+
+    /** Versión pública de isSolido para uso en proyectiles */
+    public static boolean isSolidoPublic(float x, float y, int[][] lvlData) {
+        return isSolido(x, y, lvlData);
+    }
     private static boolean isSolido(float x, float y, int[][] lvlData) {
         int maxWidth = lvlData[0].length * Juego.TILES_SIZE;
         if (x < 0 || x >= maxWidth) return true;
@@ -310,7 +322,7 @@ public class MetodoAyuda {
         for (int j = 0; j < img.getHeight(); j++)
             for (int i = 0; i < img.getWidth(); i++) {
                 Color color = new Color(img.getRGB(i, j));
-                if (color.getAlpha() == ENEMIGO5)
+                if (color.getGreen() == ENEMIGO5)
                     list.add(new enemigo5(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
             }
         return list;
@@ -321,7 +333,7 @@ public class MetodoAyuda {
         for (int j = 0; j < img.getHeight(); j++)
             for (int i = 0; i < img.getWidth(); i++) {
                 Color color = new Color(img.getRGB(i, j));
-                if (color.getAlpha() == ENEMIGO6)
+                if (color.getGreen() == ENEMIGO6)
                     list.add(new enemigo6(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
             }
         return list;
@@ -332,7 +344,7 @@ public class MetodoAyuda {
         for (int j = 0; j < img.getHeight(); j++)
             for (int i = 0; i < img.getWidth(); i++) {
                 Color color = new Color(img.getRGB(i, j));
-                if (color.getAlpha() == ENEMIGO7)
+                if (color.getGreen() == ENEMIGO7)
                     list.add(new enemigo7(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
             }
         return list;
@@ -365,7 +377,7 @@ public class MetodoAyuda {
         for (int j = 0; j < img.getHeight(); j++)
             for (int i = 0; i < img.getWidth(); i++) {
                 Color color = new Color(img.getRGB(i, j));
-                if (color.getAlpha() == ENEMIGO10)
+                if (color.getGreen() == ENEMIGO10)
                     list.add(new enemigo10(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
             }
         return list;
@@ -376,7 +388,7 @@ public class MetodoAyuda {
         for (int j = 0; j < img.getHeight(); j++)
             for (int i = 0; i < img.getWidth(); i++) {
                 Color color = new Color(img.getRGB(i, j));
-                if (color.getAlpha() == ENEMIGO11)
+                if (color.getRed() == 0 && color.getGreen() == ENEMIGO11)
                     list.add(new enemigo11(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
             }
         return list;
@@ -389,6 +401,84 @@ public class MetodoAyuda {
                 Color color = new Color(img.getRGB(i, j));
                 if (color.getGreen() == ENEMIGO12)
                     list.add(new enemigo12(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
+
+
+    public static ArrayList<enemigo13> GetEnemigo13(BufferedImage img) {
+        ArrayList<enemigo13> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == ENEMIGO13)
+                    list.add(new enemigo13(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
+
+    public static ArrayList<enemigo14> GetEnemigo14(BufferedImage img) {
+        ArrayList<enemigo14> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == ENEMIGO14)
+                    list.add(new enemigo14(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
+
+    public static ArrayList<enemigo15> GetEnemigo15(BufferedImage img) {
+        ArrayList<enemigo15> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == ENEMIGO15)
+                    list.add(new enemigo15(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
+
+    public static ArrayList<TrolJefe> GetTrolJefes(BufferedImage img) {
+        ArrayList<TrolJefe> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == TROL_JEFE)
+                    list.add(new TrolJefe(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
+
+    public static ArrayList<BossAncient> GetBossAncients(BufferedImage img) {
+        ArrayList<BossAncient> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == BOSS_ANCIENT)
+                    list.add(new BossAncient(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
+
+    public static ArrayList<BossViking> GetBossVikings(BufferedImage img) {
+        ArrayList<BossViking> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == BOSS_VIKING)
+                    list.add(new BossViking(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
+
+    public static ArrayList<BossToadKing> GetBossToadKings(BufferedImage img) {
+        ArrayList<BossToadKing> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == BOSS_TOAD_KING)
+                    list.add(new BossToadKing(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
             }
         return list;
     }

@@ -49,18 +49,25 @@ public class LoadSave {
     public static final String GOLEM_SPRITE="enemy_sprite.png";
     public static final String SKELETONW_SPRITE="enemy_sprite.png";
     public static final String SKELETONY_SPRITE="enemy_sprite.png";
-    public static final String ENEMIGO1_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO2_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO3_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO4_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO5_SPRITE = "enemy_sprite2.png";
-    public static final String ENEMIGO6_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO7_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO8_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO9_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO10_SPRITE = "enemy_sprite.png";
-    public static final String ENEMIGO11_SPRITE = "enemy_sprite3.png";
-    public static final String ENEMIGO12_SPRITE = "enemy_sprite.png";
+    public static final String ENEMIGO1_SPRITE = "elkman_sprite.png";
+    public static final String ENEMIGO2_SPRITE = "frost_golem_sprite.png";
+    public static final String ENEMIGO3_SPRITE = "magic_bear_sprite.png";
+    public static final String ENEMIGO4_SPRITE = "northerner_sprite.png";
+    public static final String ENEMIGO5_SPRITE = "snowy_sprite.png";
+    public static final String ENEMIGO6_SPRITE = "spiked_slime_sprite.png";
+    public static final String ENEMIGO7_SPRITE  = "2_Toad.png";
+    public static final String ENEMIGO8_SPRITE  = "1_Slime.png";
+    public static final String ENEMIGO9_SPRITE  = "Snake.png";
+    public static final String ENEMIGO10_SPRITE = "Scorpio.png";
+    public static final String ENEMIGO11_SPRITE = "Vulture.png";
+    public static final String ENEMIGO12_SPRITE = "2_Toad.png";
+    public static final String TROL_JEFE_SPRITE  = "trol_jefe_sprite.png";
+    public static final String BOSS_ANCIENT_SPRITE   = "ancient_boss.png";
+    public static final String BOSS_VIKING_SPRITE    = "viking_boss.png";
+    public static final String BOSS_TOAD_KING_SPRITE = "toad_king_boss.png";
+    public static final String ENEMIGO13_SPRITE = "Bug.png";
+    public static final String ENEMIGO14_SPRITE = "5_Goblin_melee.png";
+    public static final String ENEMIGO15_SPRITE = "6_Goblin_range.png";
 
 
     

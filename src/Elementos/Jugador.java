@@ -147,7 +147,7 @@ public class Jugador extends Cascaron {
     }
 
     private void checkAttack() {
-        if (attackChecked || animInd != 1)
+        if (attackChecked)
             return;
         attackChecked = true;
         if (powerAttackActive)

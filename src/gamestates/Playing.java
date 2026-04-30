@@ -1,6 +1,7 @@
 package gamestates;
 
 import Elementos.EnemyManager;
+import Elementos.GatoManager;
 import Elementos.Jugador;
 import Elementos.PlayerCharacter;
 import Juegos.Juego;
@@ -23,6 +24,7 @@ public class Playing extends state implements Statemethods {
     private Jugador player;
     private LevelManager levelMan;
     private EnemyManager enemyManager;
+    private GatoManager gatoManager;
     private ObjectManager objectManager;
     private PauseOverlay pauseOverlay;
     private GameOverOverlay gameOverOverlay;
@@ -72,10 +74,18 @@ public class Playing extends state implements Statemethods {
         resetAll();
         levelMan.loadNextLevel(i);
         player.setSpawn(levelMan.getCurrentLevel().getPlayerSpawn());
+        gatoManager.onLevelLoad(
+            levelMan.getCurrentLevel().getLvlData(),
+            levelMan.getCurrentLevel().getSpikes(),
+            levelMan.getCurrentLevel().getPlayerSpawn());
     }
 
     private void loadStartLevel() {
         enemyManager.loadEnemies(levelMan.getCurrentLevel());
+        gatoManager.onLevelLoad(
+            levelMan.getCurrentLevel().getLvlData(),
+            levelMan.getCurrentLevel().getSpikes(),
+            levelMan.getCurrentLevel().getPlayerSpawn());
         objectManager.loadObjects(levelMan.getCurrentLevel());
     }
 
@@ -86,6 +96,7 @@ public class Playing extends state implements Statemethods {
     private void inicializar() {
         levelMan = new LevelManager(juego);
         enemyManager = new EnemyManager(this);
+        gatoManager = new GatoManager();
         objectManager = new ObjectManager(this);
 
         player = new Jugador(PlayerCharacter.p1, this);
@@ -129,6 +140,7 @@ public class Playing extends state implements Statemethods {
             objectManager.update(levelMan.getCurrentLevel().getLvlData(), player);
             player.update();
             enemyManager.update(levelMan.getCurrentLevel().getLvlData(), player);
+            gatoManager.update();
             checkCloseToBorder();
         }
     }
@@ -160,6 +172,7 @@ public class Playing extends state implements Statemethods {
         player.render(g, xLvlOffset);
         enemyManager.draw(g, xLvlOffset);
         objectManager.draw(g, xLvlOffset);
+        gatoManager.draw(g, xLvlOffset);
 
         g.setColor(Color.WHITE);
         g.setFont(g.getFont().deriveFont(30f));
@@ -238,6 +251,10 @@ public class Playing extends state implements Statemethods {
                 case KeyEvent.VK_D: player.setRight(true); break;
                 case KeyEvent.VK_SPACE: player.setJump(true); break;
                 case KeyEvent.VK_ESCAPE: paused = !paused; break;
+                // Ataques con O y P
+                case KeyEvent.VK_O: player.setAttacking(true); break;
+                case KeyEvent.VK_P: player.powerAttack(); break;
+                case KeyEvent.VK_K: enemyManager.killAllEnemies(); break; // DEBUG: matar todos
             }
     }
 

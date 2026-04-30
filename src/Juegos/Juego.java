@@ -3,6 +3,7 @@ package Juegos;
 import java.awt.Graphics;
 
 import Audio.AudioPlayer;
+import Eventos.ControlXbox;
 import gamestates.GameOptions;
 import gamestates.Gamestate;
 import gamestates.Menu;
@@ -22,6 +23,7 @@ public class Juego extends Thread {
     private GameOptions gameOptions;
     private AudioOptions audioOptions;
     private AudioPlayer audioPlayer;
+    private ControlXbox controlXbox;
 
 	public final static int TILES_DEFAULT_SIZE = 32 ;
 	public final static float SCALE = 2f;
@@ -68,6 +70,9 @@ public class Juego extends Thread {
         vta = new VtaJuego(pan);
         pan.setFocusable(true);
         pan.requestFocus();
+        // Iniciar soporte de control Xbox
+        controlXbox = new ControlXbox(this);
+        controlXbox.start();
         comenzar();
     }
 
@@ -163,7 +168,7 @@ public class Juego extends Thread {
     public void windowFocusLost(){
         if(Gamestate.state==Gamestate.PLAYING)
         playing.getPlayer().resetDirBooleans();
-
+        if (controlXbox != null) controlXbox.liberarTodo();
     }
 
     public Menu getMenu(){
@@ -181,6 +186,8 @@ public class Juego extends Thread {
     public AudioOptions geAudioOptions(){
         return audioOptions;
     }
+    public java.awt.Component getPanel() { return pan; }
+
     public AudioPlayer getAudioPlayer() {
 		return audioPlayer;
 	}

@@ -34,6 +34,13 @@ public class Level {
     private ArrayList<enemigo10> enemigos10;
     private ArrayList<enemigo11> enemigos11;
     private ArrayList<enemigo12> enemigos12;
+    private ArrayList<TrolJefe>  trolJefes;
+    private ArrayList<BossAncient>   bossAncients;
+    private ArrayList<BossViking>    bossVikings;
+    private ArrayList<BossToadKing>  bossToadKings;
+    private ArrayList<enemigo13> enemigos13;
+    private ArrayList<enemigo14> enemigos14;
+    private ArrayList<enemigo15> enemigos15;
 
     private ArrayList<Potion> potions;
     private ArrayList<Spike> spikes;
@@ -93,6 +100,13 @@ public class Level {
         enemigos10 = MetodoAyuda.GetEnemigo10(img);
         enemigos11 = MetodoAyuda.GetEnemigo11(img);
         enemigos12 = MetodoAyuda.GetEnemigo12(img);
+        enemigos13 = MetodoAyuda.GetEnemigo13(img);
+        enemigos14 = MetodoAyuda.GetEnemigo14(img);
+        enemigos15 = MetodoAyuda.GetEnemigo15(img);
+        trolJefes  = MetodoAyuda.GetTrolJefes(img);
+        bossAncients  = MetodoAyuda.GetBossAncients(img);
+        bossVikings   = MetodoAyuda.GetBossVikings(img);
+        bossToadKings = MetodoAyuda.GetBossToadKings(img);
     }
 
     private void createLevelData() { lvlData = GetLevelData(img); }
@@ -123,4 +137,155 @@ public class Level {
     public ArrayList<enemigo10> getEnemigo10() { return enemigos10; }
     public ArrayList<enemigo11> getEnemigo11() { return enemigos11; }
     public ArrayList<enemigo12> getEnemigo12() { return enemigos12; }
+    public ArrayList<enemigo13> getEnemigo13() { return enemigos13; }
+    public ArrayList<enemigo14> getEnemigo14() { return enemigos14; }
+    public ArrayList<enemigo15> getEnemigo15() { return enemigos15; }
+    public ArrayList<TrolJefe>  getTrolJefes()  { return trolJefes; }
+    public ArrayList<BossAncient>   getBossAncients()  { return bossAncients; }
+    public ArrayList<BossViking>    getBossVikings()   { return bossVikings; }
+    public ArrayList<BossToadKing>  getBossToadKings() { return bossToadKings; }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Helpers de testing: vaciar enemigos/bosses o dejar solo 1 de cada tipo.
+    // Se usan desde LevelManager para tener un primer nivel "de prueba".
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /** Borra TODOS los enemigos y bosses de este nivel. */
+    public void clearAllEnemiesAndBosses() {
+        if (golems     != null) golems.clear();
+        if (Skeletonw  != null) Skeletonw.clear();
+        if (skeletony  != null) skeletony.clear();
+        if (enemigos1  != null) enemigos1.clear();
+        if (enemigos2  != null) enemigos2.clear();
+        if (enemigos3  != null) enemigos3.clear();
+        if (enemigos4  != null) enemigos4.clear();
+        if (enemigos5  != null) enemigos5.clear();
+        if (enemigos6  != null) enemigos6.clear();
+        if (enemigos7  != null) enemigos7.clear();
+        if (enemigos8  != null) enemigos8.clear();
+        if (enemigos9  != null) enemigos9.clear();
+        if (enemigos10 != null) enemigos10.clear();
+        if (enemigos11 != null) enemigos11.clear();
+        if (enemigos12 != null) enemigos12.clear();
+        if (enemigos13 != null) enemigos13.clear();
+        if (enemigos14 != null) enemigos14.clear();
+        if (enemigos15 != null) enemigos15.clear();
+        if (trolJefes     != null) trolJefes.clear();
+        if (bossAncients  != null) bossAncients.clear();
+        if (bossVikings   != null) bossVikings.clear();
+        if (bossToadKings != null) bossToadKings.clear();
+    }
+
+    /**
+     * Modo prueba: vacía TODO y luego inyecta una instancia de cada uno de los 15 enemigos
+     * y de cada uno de los bosses, distribuidos a lo largo del nivel sobre suelo sólido.
+     * Útil para ver cómo se ven todos los sprites en un solo nivel.
+     */
+    public void keepOneOfEachEnemyAndBoss() {
+        clearAllEnemiesAndBosses();
+        if (lvlData == null) return;
+
+        // Lista de "factories" — un creador por cada tipo. El orden importa: así
+        // los enemigos van apareciendo de izquierda a derecha en este orden.
+        java.util.function.BiConsumer<Float, Float>[] spawners = new java.util.function.BiConsumer[] {
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> golems.add(new Golem(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> Skeletonw.add(new skeletonW(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> skeletony.add(new skeletonY(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos1.add(new enemigo1(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos2.add(new enemigo2(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos3.add(new enemigo3(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos4.add(new enemigo4(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos5.add(new enemigo5(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos6.add(new enemigo6(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos7.add(new enemigo7(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos8.add(new enemigo8(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos9.add(new enemigo9(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos10.add(new enemigo10(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos11.add(new enemigo11(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos12.add(new enemigo12(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos13.add(new enemigo13(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos14.add(new enemigo14(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> enemigos15.add(new enemigo15(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> trolJefes.add(new TrolJefe(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> bossAncients.add(new BossAncient(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> bossVikings.add(new BossViking(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> bossToadKings.add(new BossToadKing(x, y)),
+        };
+
+        // Encontrar posiciones de suelo distribuidas a lo largo del nivel
+        int[] cols = findSpreadFloorColumns(spawners.length);
+        for (int i = 0; i < spawners.length; i++) {
+            int col = cols[i];
+            int floorRow = findFloorRow(col);
+            if (floorRow < 0) continue;
+            // Coloca el enemigo dos tiles arriba del suelo para que caiga limpio
+            float spawnX = col * Juegos.Juego.TILES_SIZE;
+            float spawnY = (floorRow - 2) * Juegos.Juego.TILES_SIZE;
+            spawners[i].accept(spawnX, spawnY);
+        }
+    }
+
+    /** Devuelve N columnas distribuidas a lo ancho del mapa que tengan suelo. */
+    private int[] findSpreadFloorColumns(int n) {
+        int width = lvlData[0].length;
+        // Saltar las primeras 4 columnas (donde suele estar el spawn del jugador)
+        int startCol = 4;
+        int usable = width - startCol - 2;
+        int[] result = new int[n];
+        for (int i = 0; i < n; i++) {
+            // Distribución uniforme de columnas candidatas
+            int target = startCol + (int) ((i + 0.5) * usable / n);
+            // Buscar la columna más cercana que tenga suelo
+            int col = findNearestColumnWithFloor(target);
+            result[i] = col;
+        }
+        return result;
+    }
+
+    /** Busca alrededor de targetCol una columna cuyo suelo esté en la mitad inferior del mapa.
+     *  Si no la encuentra, acepta cualquier columna con suelo. */
+    private int findNearestColumnWithFloor(int targetCol) {
+        int width = lvlData[0].length;
+        int height = lvlData.length;
+        int lowThreshold = (int)(height * 0.65); // queremos floors en row >= 65% del alto
+        int fallback = -1;
+        for (int delta = 0; delta < width; delta++) {
+            for (int sign : new int[]{1, -1}) {
+                int col = targetCol + delta * sign;
+                if (col < 0 || col >= width) continue;
+                int floor = findFloorRow(col);
+                if (floor < 0) continue;
+                if (floor >= lowThreshold) return col;
+                if (fallback < 0) fallback = col;
+            }
+        }
+        return (fallback >= 0) ? fallback : Math.max(0, Math.min(width - 1, targetCol));
+    }
+
+    /**
+     * Devuelve la fila del suelo más BAJO en la columna que tenga al menos 3 tiles
+     * de aire arriba (para evitar plataformas pequeñas/techos donde el enemigo
+     * quedaría apretado). Si no hay ninguno con esa holgura, relaja el criterio.
+     */
+    private int findFloorRow(int col) {
+        if (lvlData == null) return -1;
+        if (col < 0 || col >= lvlData[0].length) return -1;
+
+        int bestSpacious = -1; // con 3 tiles de aire arriba
+        int bestAny      = -1; // cualquiera con aire encima
+        for (int row = 1; row < lvlData.length; row++) {
+            if (!Utilz.MetodoAyuda.IsTileSolid(col, row, lvlData)) continue;
+            if (Utilz.MetodoAyuda.IsTileSolid(col, row - 1, lvlData)) continue;
+            // tile sólido con aire inmediatamente arriba — candidato
+            bestAny = row;
+            // ¿tiene 3 tiles de aire arriba?
+            boolean spacious = true;
+            for (int up = 1; up <= 3 && spacious; up++) {
+                if (row - up < 0) { spacious = false; break; }
+                if (Utilz.MetodoAyuda.IsTileSolid(col, row - up, lvlData)) spacious = false;
+            }
+            if (spacious) bestSpacious = row;
+        }
+        return (bestSpacious >= 0) ? bestSpacious : bestAny;
+    }
 }
