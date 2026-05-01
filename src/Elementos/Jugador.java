@@ -1,24 +1,21 @@
 package Elementos;
 
+import Audio.AudioPlayer;
+import Juegos.Juego;
+import static Utilz.Constantes.*;
+import static Utilz.Constantes.ConstanteJugador.*;
+import Utilz.LoadSave;
+import static Utilz.LoadSave.WeaponConstants.WEAPON_DAMAGE;
+import static Utilz.MetodoAyuda.*;
+import gamestates.Playing;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-
-import Audio.AudioPlayer;
-import Juegos.Juego;
-import Utilz.LoadSave;
-import gamestates.Playing;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static Utilz.Constantes.*;
-import static Utilz.Constantes.ConstanteJugador.*;
-import static Utilz.Constantes.WeaponConstants.*;
-import static Utilz.LoadSave.WeaponConstants.WEAPON_DAMAGE;
-import static Utilz.MetodoAyuda.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Jugador extends Cascaron {
     private BufferedImage[][] idleAni;
@@ -74,7 +71,8 @@ public class Jugador extends Cascaron {
     private int maxShield = 200;
 
     // Sistema de flechas (solo para p3 arquero)
-    private List<Flecha> flechas = new ArrayList<>();
+    // CopyOnWriteArrayList: thread-safe para que el render (EDT) no choque con el update loop
+    private List<Flecha> flechas = new CopyOnWriteArrayList<>();
     private static final int ARROW_COOLDOWN_TICKS = 20;
     private int arrowCooldownTick = 0;
     private boolean arrowFired = false;

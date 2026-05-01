@@ -35,9 +35,15 @@ public class BossViking extends Enemy {
 
     @Override
     protected void firstUpdateCheck(int[][] lvlData) {
-        super.firstUpdateCheck(lvlData);
-        // Si está en el aire al spawn, forzar caída rápida para no verse "volando"
-        if (inAir) airSpeed = 2.0f * Juego.SCALE;
+        // Pegar al suelo, pero dejando 1 pixel libre para que las esquinas
+        // inferiores de la hitbox no se interpreten como "dentro" de un sólido
+        // (mismo truco que usa la gravedad en GetEntityYPosUnderRoofOrAboveFloor).
+        Utilz.MetodoAyuda.SnapEntityToFloor(hitbox, lvlData);
+        hitbox.y -= 1;
+        inAir = false;
+        airSpeed = 0;
+        tileY = (int) (hitbox.y / Juego.TILES_SIZE);
+        firstUpdate = false;
     }
 
     @Override
@@ -62,6 +68,26 @@ public class BossViking extends Enemy {
         else
             attackBox.x = hitbox.x + hitbox.width;
         attackBox.y = hitbox.y;
+    }
+
+    /**
+     * Movimiento propio del jefe: respeta paredes y aplica gravedad si camina al vacío.
+     * No se queda atascado en bordes (no usa IsFloor para frenar el avance).
+     */
+    @Override
+    protected void move(int[][] lvlData) {
+        float xSpeed = (walkDir == LEFT) ? -walkSpeed : walkSpeed;
+        if (Utilz.MetodoAyuda.CanMoveHere(hitbox.x + xSpeed, hitbox.y,
+                                          hitbox.width, hitbox.height, lvlData)) {
+            hitbox.x += xSpeed;
+            // Si quedó pisando aire, dejar que caiga por gravedad
+            if (!Utilz.MetodoAyuda.isEntityOnFloor(hitbox, lvlData)) {
+                inAir = true;
+            }
+        } else {
+            // Topó con una pared, da la vuelta
+            changeWalkDir();
+        }
     }
 
     private void updateBehavior(int[][] lvlData, Jugador jugador) {
@@ -103,21 +129,36 @@ public class BossViking extends Enemy {
 
     @Override
     public int getAniRowOffset() {
-        // viking_boss.png - el sprite mira a la DERECHA por defecto
-        // Row 0: IDLE   Row 1: ATTACK1   Row 2: ATAQUEC
-        // Row 3: WALK   Row 4: DEATH     Row 5: HURT
+        // Sprite real (viking_boss.png 6x9, 72x72):
+        // Row 0 = IDLE (6f)   Row 1 = ATTACK1 (4f)  Row 2 = ATAQUEC (4f)
+        // Row 3 = WALK (6f)   Row 4 = DEATH (4f)    Row 5 = HURT (2f)
         switch (state) {
-            case INACTIVO:             return 0;  // IDLE
-            case CAMINAR: case CORRER: return 3;  // WALK
-            case ATACAR1:              return 1;  // ATTACK1
-            case ATAQUEC:              return 2;  // ATAQUEC
-            case GOLPE:                return 5;  // HURT
-            case MUERTO:               return 4;  // DEATH
-            default:                   return 0;
+            case INACTIVO: return 0;
+            case ATACAR1:
+            case ATACAR2:
+            case ATACAR3:  return 1;
+            case ATAQUEC:  return 2;
+            case CAMINAR:
+            case CORRER:   return 3;
+            case MUERTO:   return 4;
+            case GOLPE:    return 5;
+            default:       return 0;
         }
     }
 
-    // Sprite mira a la DERECHA por defecto → flip cuando va a la IZQUIERDA
-    public int flipX() { return (walkDir == LEFT) ? w : 0; }
-    public int flipW() { return (walkDir == LEFT) ? -1 : 1; }
+    // Las filas IDLE/ATACAR miran a la DERECHA por defecto → flip cuando va a la IZQUIERDA.
+    // PERO la fila CAMINAR del sprite mira a la IZQUIERDA → en ese estado el flip es al revés.
+    public int flipX() {
+        boolean walking = (state == CAMINAR || state == CORRER);
+        boolean spriteFacesLeft = walking;
+        // Si el sprite mira hacia donde caminamos, no flip; si no, flip.
+        boolean needsFlip = spriteFacesLeft ? (walkDir == RIGHT) : (walkDir == LEFT);
+        return needsFlip ? w : 0;
+    }
+    public int flipW() {
+        boolean walking = (state == CAMINAR || state == CORRER);
+        boolean spriteFacesLeft = walking;
+        boolean needsFlip = spriteFacesLeft ? (walkDir == RIGHT) : (walkDir == LEFT);
+        return needsFlip ? -1 : 1;
+    }
 }

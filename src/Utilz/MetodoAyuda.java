@@ -497,4 +497,15 @@ public class MetodoAyuda {
             }
         return list;
     }
+
+    public static ArrayList<BossCity> GetBossCities(BufferedImage img) {
+        ArrayList<BossCity> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getWidth(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                if (color.getGreen() == BOSS_CITY)
+                    list.add(new BossCity(i * Juego.TILES_SIZE, j * Juego.TILES_SIZE));
+            }
+        return list;
+    }
 }

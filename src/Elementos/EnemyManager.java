@@ -19,7 +19,8 @@ public class EnemyManager {
 	                          enemigo9arr, enemigo10arr, enemigo11arr, enemigo12arr,
 	                          enemigo13arr, enemigo14arr, enemigo15arr,
 	                          trolJefeArr,
-	                          bossAncientArr, bossVikingArr, bossToadKingArr;
+	                          bossAncientArr, bossVikingArr, bossToadKingArr,
+	                          bossCityArr;
 
 	// LEVEL 1
 	private ArrayList<Golem> golems = new ArrayList<>();
@@ -50,6 +51,7 @@ public class EnemyManager {
 	private ArrayList<BossAncient>   bossAncients  = new ArrayList<>();
 	private ArrayList<BossViking>    bossVikings   = new ArrayList<>();
 	private ArrayList<BossToadKing>  bossToadKings = new ArrayList<>();
+	private ArrayList<BossCity>      bossCities    = new ArrayList<>();
 
 	public EnemyManager(Playing playing) {
 		this.playing = playing;
@@ -79,6 +81,7 @@ public class EnemyManager {
 		bossAncients  = level.getBossAncients();
 		bossVikings   = level.getBossVikings();
 		bossToadKings = level.getBossToadKings();
+		bossCities    = level.getBossCities();
 	}
 
 	public void update(int[][] lvlData, Jugador jugador) {
@@ -107,6 +110,7 @@ public class EnemyManager {
 		for (BossAncient  s : bossAncients)  if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; isAnyBossActive = true; }
 		for (BossViking   s : bossVikings)   if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; isAnyBossActive = true; }
 		for (BossToadKing s : bossToadKings) if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; isAnyBossActive = true; }
+		for (BossCity     s : bossCities)    if (s.isActive()) { s.update(lvlData, jugador); isAnyActive = true; isAnyBossActive = true; }
 
 		// El nivel se completa SOLO al matar al jefe. Antes bastaba con que no
 		// quedara ningún enemigo activo (incluidos los normales); ahora los
@@ -114,7 +118,8 @@ public class EnemyManager {
 		// derrotar al boss. La variable isAnyActive se conserva por si otros
 		// sistemas la consultan en el futuro.
 		boolean wasBossEverPresent = !trolJefes.isEmpty() || !bossAncients.isEmpty()
-				|| !bossVikings.isEmpty() || !bossToadKings.isEmpty();
+				|| !bossVikings.isEmpty() || !bossToadKings.isEmpty()
+				|| !bossCities.isEmpty();
 
 		if (wasBossEverPresent && !isAnyBossActive)
 			playing.setLevelCompleted(true);
@@ -143,6 +148,7 @@ public class EnemyManager {
 		drawBossAncient(g, xLvlOffset);
 		drawBossViking(g, xLvlOffset);
 		drawBossToadKing(g, xLvlOffset);
+		drawBossCity(g, xLvlOffset);
 	}
 
 	private void drawCrabs(Graphics g, int xLvlOffset) {
@@ -440,6 +446,25 @@ public class EnemyManager {
 			}
 	}
 
+	private void drawBossCity(Graphics g, int xLvlOffset) {
+		for (BossCity t : bossCities)
+			if (t.isActive()) {
+				int row = t.getAniRowOffset();
+				int col = t.getAniIndex();
+				if (bossCityArr != null && row < bossCityArr.length &&
+				    bossCityArr[row] != null && col < bossCityArr[row].length &&
+				    bossCityArr[row][col] != null)
+					g.drawImage(bossCityArr[row][col],
+						(int)t.getHitbox().x - xLvlOffset - BOSS_CITY_DRAWOFFSET_X + t.flipX(),
+						(int)t.getHitbox().y - BOSS_CITY_DRAWOFFSET_Y,
+						BOSS_CITY_WIDTH * t.flipW(), BOSS_CITY_HEIGHT, null);
+
+				// Dibujar las balas que dispara
+				t.drawProyectiles(g, xLvlOffset);
+				t.drawHealthBar(g, xLvlOffset);
+			}
+	}
+
 	public void checkEnemyHit(Rectangle2D.Float attackBox) {
 		int dmg = playing.getPlayer().getDamage();
 
@@ -618,6 +643,14 @@ public class EnemyManager {
 					if (c.getEnemyState() == MUERTO) playing.increaseScore(400);
 					return;
 				}
+
+		for (BossCity c : bossCities)
+			if (c.isActive() && c.getEnemyState() != MUERTO && c.getEnemyState() != GOLPE)
+				if (attackBox.intersects(c.getHitbox())) {
+					c.hurt(dmg);
+					if (c.getEnemyState() == MUERTO) playing.increaseScore(500);
+					return;
+				}
 	}
 
 	private void loadEnemyImgs() {
@@ -648,6 +681,7 @@ public class EnemyManager {
 		bossAncientArr  = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.BOSS_ANCIENT_SPRITE),   6, 9, BOSS_ANCIENT_WIDTH_DEFAULT,   BOSS_ANCIENT_HEIGHT_DEFAULT);
 		bossVikingArr   = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.BOSS_VIKING_SPRITE),    6, 9, BOSS_VIKING_WIDTH_DEFAULT,    BOSS_VIKING_HEIGHT_DEFAULT);
 		bossToadKingArr = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.BOSS_TOAD_KING_SPRITE), 6, 9, BOSS_TOAD_KING_WIDTH_DEFAULT, BOSS_TOAD_KING_HEIGHT_DEFAULT);
+		bossCityArr     = getImgArr(LoadSave.GetSpriteAtlas(LoadSave.BOSS_CITY_SPRITE),     6, 9, BOSS_CITY_WIDTH_DEFAULT,     BOSS_CITY_HEIGHT_DEFAULT);
 	}
 
 	private BufferedImage[][] getImgArr(BufferedImage atlas, int xSize, int ySize, int spriteW, int spriteH) {
@@ -691,6 +725,7 @@ public class EnemyManager {
 		for (BossAncient  e : bossAncients)  if (e.isActive()) e.hurt(99999);
 		for (BossViking   e : bossVikings)   if (e.isActive()) e.hurt(99999);
 		for (BossToadKing e : bossToadKings) if (e.isActive()) e.hurt(99999);
+		for (BossCity     e : bossCities)    if (e.isActive()) e.hurt(99999);
 	}
 	public void resetAllEnemies() {
 		for (Golem s : golems) s.resetEnemy();
@@ -715,12 +750,10 @@ public class EnemyManager {
 		for (BossAncient  s : bossAncients)  s.resetEnemy();
 		for (BossViking   s : bossVikings)   s.resetEnemy();
 		for (BossToadKing s : bossToadKings) s.resetEnemy();
+		for (BossCity     s : bossCities)    s.resetEnemy();
 	}
 
-	/**
-	 * Comprueba si las flechas del arquero (p3) impactan algún enemigo.
-	 * Debe llamarse en cada frame desde Playing.update() cuando el jugador es p3.
-	 */
+
 	public void checkFlechasHit(Jugador jugador) {
 		// Macro-helper: intenta golpear cada lista de enemigos con las flechas
 		for (Golem e : golems)         tryArrowHit(e, jugador, 100);
@@ -745,6 +778,7 @@ public class EnemyManager {
 		for (BossAncient  e : bossAncients)  tryArrowHit(e, jugador, 500);
 		for (BossViking   e : bossVikings)   tryArrowHit(e, jugador, 500);
 		for (BossToadKing e : bossToadKings) tryArrowHit(e, jugador, 500);
+		for (BossCity     e : bossCities)    tryArrowHit(e, jugador, 600);
 	}
 
 	private void tryArrowHit(Enemy e, Jugador jugador, int scoreValue) {
@@ -779,6 +813,7 @@ public class EnemyManager {
 		for (BossAncient  e : bossAncients)  tryFireballHit(e, jugador, 500);
 		for (BossViking   e : bossVikings)   tryFireballHit(e, jugador, 500);
 		for (BossToadKing e : bossToadKings) tryFireballHit(e, jugador, 500);
+		for (BossCity     e : bossCities)    tryFireballHit(e, jugador, 600);
 	}
 
 	private void tryFireballHit(Enemy e, Jugador jugador, int scoreValue) {

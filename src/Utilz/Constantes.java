@@ -93,6 +93,7 @@ public class Constantes {
         public static final int BOSS_ANCIENT   = 19;
         public static final int BOSS_VIKING    = 20;
         public static final int BOSS_TOAD_KING = 21;
+        public static final int BOSS_CITY      = 22;
 
         //        ACTIONS
         public static final int INACTIVO=0;
@@ -259,6 +260,14 @@ public class Constantes {
         public static final int BOSS_TOAD_KING_DRAWOFFSET_X = (int)(20 * Juego.SCALE);
         public static final int BOSS_TOAD_KING_DRAWOFFSET_Y = (int)(40 * Juego.SCALE);
 
+        // BOSS CITY (jefe final ciudad) — robot en monociclo, 6x9, frame 96x96
+        public static final int BOSS_CITY_WIDTH_DEFAULT   = 96;
+        public static final int BOSS_CITY_HEIGHT_DEFAULT  = 96;
+        public static final int BOSS_CITY_WIDTH   = (int)(BOSS_CITY_WIDTH_DEFAULT  * Juego.SCALE);
+        public static final int BOSS_CITY_HEIGHT  = (int)(BOSS_CITY_HEIGHT_DEFAULT * Juego.SCALE);
+        public static final int BOSS_CITY_DRAWOFFSET_X = (int)(30 * Juego.SCALE);
+        public static final int BOSS_CITY_DRAWOFFSET_Y = (int)(40 * Juego.SCALE);
+
         public static int GetSpriteAmount(int enemy_type, int enemy_state) {
             switch (enemy_type) {
                 case GOLEM:
@@ -298,43 +307,43 @@ public class Constantes {
                     }
                 case ENEMIGO1: 
                     switch (enemy_state) {
-                        case INACTIVO: return 6;
-                        case CAMINAR:  return 5;
-                        case CORRER:   return 5;
+                        case INACTIVO: return 4;
+                        case CAMINAR:  return 4;
+                        case CORRER:   return 4;
                         case ATACAR1:  return 4;
-                        case GOLPE:    return 4;
-                        case MUERTO:   return 2;
+                        case GOLPE:    return 2;
+                        case MUERTO:   return 6;
                         default:       return 1;
                     }
                 case ENEMIGO2: 
                     switch (enemy_state) {
                         case INACTIVO: return 4;
-                        case CAMINAR:  return 6;
-                        case CORRER:   return 6;
+                        case CAMINAR:  return 4;
+                        case CORRER:   return 4;
                         case ATACAR1:  return 4;
-                        case GOLPE:    return 4;
+                        case GOLPE:    return 2;
                         case MUERTO:   return 2;
                         default:       return 1;
                     }
                 case ENEMIGO3: 
                     switch (enemy_state) {
-                        case INACTIVO: return 6;
-                        case CAMINAR:  return 6;
-                        case CORRER:   return 6;
-                        case ATACAR1:  return 5;
+                        case INACTIVO: return 4;
+                        case CAMINAR:  return 5;
+                        case CORRER:   return 5;
+                        case ATACAR1:  return 4;
                         case ATAQUEC:  return 4;
-                        case GOLPE:    return 4;
-                        case MUERTO:   return 2;
+                        case GOLPE:    return 2;
+                        case MUERTO:   return 4;
                         default:       return 1;
                     }
                 case ENEMIGO4: 
                     switch (enemy_state) {
-                        case INACTIVO: return 6;
-                        case CAMINAR:  return 5;
+                        case INACTIVO: return 4;
+                        case CAMINAR:  return 6;
                         case CORRER:   return 6;
-                        case ATACAR1:  return 4;
-                        case GOLPE:    return 4;
-                        case MUERTO:   return 2;
+                        case ATACAR1:  return 6;
+                        case GOLPE:    return 2;
+                        case MUERTO:   return 5;
                         default:       return 1;
                     }
                 case ENEMIGO5: 
@@ -343,29 +352,29 @@ public class Constantes {
                         case CAMINAR:  return 6;
                         case CORRER:   return 6;
                         case ATACAR1:  return 4;
-                        case GOLPE:    return 4;
-                        case MUERTO:   return 2;
+                        case GOLPE:    return 2;
+                        case MUERTO:   return 6;
                         default:       return 1;
                     }
                 case ENEMIGO6: 
                     switch (enemy_state) {
-                        case INACTIVO: return 5;
+                        case INACTIVO: return 4;
                         case CAMINAR:  return 4;
                         case CORRER:   return 4;
-                        case ATACAR1:  return 4;
-                        case GOLPE:    return 4;
-                        case MUERTO:   return 2;
+                        case ATACAR1:  return 5;
+                        case GOLPE:    return 2;
+                        case MUERTO:   return 4;
                         default:       return 1;
                     }
                 case ENEMIGO7: 
                     switch (enemy_state) {
                         case INACTIVO: return 4;
                         case CAMINAR:
-                        case CORRER:   return 4;
+                        case CORRER:   return 6;
                         case ATAQUEC:
-                        case ATACAR1:  return 2;
-                        case GOLPE:    return 4;
-                        case MUERTO:   return 6;
+                        case ATACAR1:  return 4;
+                        case GOLPE:    return 2;
+                        case MUERTO:   return 4;
                         default:       return 1;
                     }
                 case ENEMIGO8: 
@@ -374,19 +383,19 @@ public class Constantes {
                         case CAMINAR:
                         case CORRER:   return 4;
                         case ATAQUEC:
-                        case ATACAR1:  return 2;
-                        case GOLPE:    return 4;
+                        case ATACAR1:  return 4;
+                        case GOLPE:    return 2;
                         case MUERTO:   return 4;
                         default:       return 1;
                     }
                 case ENEMIGO9: 
                     switch (enemy_state) {
-                        case INACTIVO: return 6;
+                        case INACTIVO: return 4;
                         case CAMINAR:
                         case CORRER:   return 4;
                         case ATAQUEC:
-                        case ATACAR1:  return 2;
-                        case GOLPE:    return 4;
+                        case ATACAR1:  return 6;
+                        case GOLPE:    return 2;
                         case MUERTO:   return 4;
                         default:       return 1;
                     }
@@ -396,8 +405,8 @@ public class Constantes {
                         case CAMINAR:
                         case CORRER:   return 4;
                         case ATAQUEC:
-                        case ATACAR1:  return 2;
-                        case GOLPE:    return 4;
+                        case ATACAR1:  return 4;
+                        case GOLPE:    return 2;
                         case MUERTO:   return 4;
                         default:       return 1;
                     }
@@ -416,80 +425,110 @@ public class Constantes {
                     switch (enemy_state) {
                         case INACTIVO: return 4;
                         case CAMINAR:
-                        case CORRER:   return 4;
+                        case CORRER:   return 6;
                         case ATAQUEC:
-                        case ATACAR1:  return 2;
-                        case GOLPE:    return 4;
-                        case MUERTO:   return 6;
+                        case ATACAR1:  return 4;
+                        case GOLPE:    return 2;
+                        case MUERTO:   return 4;
                         default:       return 1;
                     }
                 case ENEMIGO13: 
                     switch (enemy_state) {
                         case INACTIVO: return 4;
-                        case CAMINAR: case CORRER: return 4;
-                        case ATACAR1: case ATAQUEC: return 2;
-                        case GOLPE: return 4;
+                        case CAMINAR: 
+                        case CORRER: return 4;
+                        case ATACAR1: 
+                        case ATAQUEC: return 4;
+                        case GOLPE: return 2;
                         case MUERTO: return 4;
                         default: return 1;
                     }
                 case ENEMIGO14: 
                     switch (enemy_state) {
                         case INACTIVO: return 4;
-                        case CAMINAR: case CORRER: return 4;
-                        case ATACAR1: case ATAQUEC: return 2;
-                        case GOLPE: return 4;
-                        case MUERTO: return 6;
+                        case CAMINAR: 
+                        case CORRER: return 6;
+                        case ATACAR1: 
+                        case ATAQUEC: return 4;
+                        case GOLPE: return 2;
+                        case MUERTO: return 4;
                         default: return 1;
                     }
                 case ENEMIGO15: 
                     switch (enemy_state) {
                         case INACTIVO: return 4;
-                        case CAMINAR: case CORRER: return 4;
-                        case ATACAR1: case ATAQUEC: return 2;
-                        case GOLPE: return 4;
-                        case MUERTO: return 6;
+                        case CAMINAR: 
+                        case CORRER: return 6;
+                        case ATACAR1: return 6;
+                        case ATAQUEC: return 6;
+                        case GOLPE: return 2;
+                        case MUERTO: return 4;
                         default: return 1;
                     }
                 case TROL_JEFE:
                     switch (enemy_state) {
-                        case INACTIVO: return 4;
-                        case CAMINAR:  return 4;
-                        case CORRER:   return 6;
-                        case ATACAR1:  return 5;
-                        case ATAQUEC:  return 6;
+case ATACAR1:  return 4;
+                        case ATACAR2:  return 4;
+                        case ATACAR3:  return 4;
+                        case ATAQUEC:  return 5; // ¡Eran 5, no 6!
+                        case MUERTO:   return 4; // ¡Eran 4, no 6!
                         case GOLPE:    return 2;
-                        case MUERTO:   return 4;
+                        case INACTIVO: return 4;
+                        case CAMINAR:  return 6;
+                        case CORRER:   return 6;
                         default:       return 1;
                     }
                 case BOSS_ANCIENT:
                     switch (enemy_state) {
-                        case INACTIVO:              return 6;
-                        case CAMINAR: case CORRER:  return 4;
-                        case ATACAR1:               return 4;
-                        case ATAQUEC:               return 4;
-                        case GOLPE:                 return 4;
-                        case MUERTO:                return 4;
-                        default: return 1;
+case ATACAR1:  return 4;
+                        case ATACAR2:  return 5; // ¡Eran 5, no 6!
+                        case ATACAR3:  return 4;
+                        case ATAQUEC:  return 5;
+                        case MUERTO:   return 4;
+                        case GOLPE:    return 2;
+                        case INACTIVO: return 4;
+                        case CAMINAR:  return 4;
+                        case CORRER:   return 4;
+                        default:       return 1;
                     }
                 case BOSS_VIKING:
                     switch (enemy_state) {
-                        case INACTIVO:              return 6;
-                        case CAMINAR: case CORRER:  return 6;
-                        case ATACAR1:               return 4;
-                        case ATAQUEC:               return 4;
-                        case GOLPE:                 return 2;
-                        case MUERTO:                return 4;
-                        default: return 1;
+case ATACAR1:  return 4;
+                        case ATACAR2:  return 4;
+                        case ATACAR3:  return 4;
+                        case ATAQUEC:  return 4;
+                        case MUERTO:   return 4;
+                        case GOLPE:    return 2;
+                        case INACTIVO: return 6;
+                        case CAMINAR:  return 6;
+                        case CORRER:   return 6;
+                        default:       return 1;
                     }
                 case BOSS_TOAD_KING:
                     switch (enemy_state) {
-                        case INACTIVO:              return 4;
-                        case CAMINAR: case CORRER:  return 6;
-                        case ATACAR1:               return 4;
-                        case ATAQUEC:               return 6;
-                        case GOLPE:                 return 4;
-                        case MUERTO:                return 4;
-                        default: return 1;
+case ATACAR1:  return 4;
+                        case ATACAR2:  return 4;
+                        case ATACAR3:  return 5; // ¡Eran 5, no 6!
+                        case ATAQUEC:  return 4;
+                        case MUERTO:   return 4;
+                        case GOLPE:    return 2;
+                        case INACTIVO: return 4;
+                        case CAMINAR:  return 4;
+                        case CORRER:   return 5; // ¡Eran 5, no 6!
+                        default:       return 1;
+                    }
+                case BOSS_CITY:
+                    switch (enemy_state) {
+                        case ATACAR1:  return 6;  // disparo (también melee)
+                        case ATACAR2:  return 6;  // disparo
+                        case ATACAR3:  return 6;
+                        case ATAQUEC:  return 6;  // especial
+                        case MUERTO:   return 6;
+                        case GOLPE:    return 4;
+                        case INACTIVO: return 6;
+                        case CAMINAR:  return 6;
+                        case CORRER:   return 6;
+                        default:       return 1;
                     }
                 default:
                     return 1;
@@ -520,6 +559,7 @@ public class Constantes {
                 case BOSS_ANCIENT:   return 250;
                 case BOSS_VIKING:    return 280;
                 case BOSS_TOAD_KING: return 220;
+                case BOSS_CITY:      return 350;
                 default: return 50;
             }
         }
@@ -548,6 +588,7 @@ public class Constantes {
             case BOSS_ANCIENT:   return 20;
             case BOSS_VIKING:    return 22;
             case BOSS_TOAD_KING: return 18;
+            case BOSS_CITY:      return 25;
             default: return 0;
             }
         }

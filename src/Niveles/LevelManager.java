@@ -66,7 +66,7 @@ public class LevelManager {
         //   N2 bosque otoñal     → Elkman, GoblinR, Toad         → BossToadKing
         //   N3 nieve             → FrostGolem, Snowy, Northerner → BossViking
         //   N4 lava/desierto     → Scorpio, Vulture, Bug         → BossAncient
-        //   N5 ciudad/castillo   → distribución pseudo-aleatoria → BossViking (reutilizado)
+        //   N5 ciudad/castillo   → distribución pseudo-aleatoria → BossCity (jefe final)
         Level.EnemyType[][] enemiesByLevel = {
             // N1 — bosque/jungla: criaturas verdes y goblins (9 enemigos)
             { Level.EnemyType.ENEMIGO7, Level.EnemyType.ENEMIGO8, Level.EnemyType.ENEMIGO14,
@@ -99,7 +99,7 @@ public class LevelManager {
             Level.EnemyType.BOSS_TOADKING,
             Level.EnemyType.BOSS_VIKING,
             Level.EnemyType.BOSS_ANCIENT,
-            Level.EnemyType.BOSS_VIKING,  // ciudad: reutiliza al vikingo (guerrero)
+            Level.EnemyType.BOSS_CITY,    // ciudad: jefe final robot en monociclo
         };
 
         for (int i = 0; i < allLevels.length; i++) {

@@ -62,6 +62,7 @@ public class LoadSave {
     public static final String BOSS_ANCIENT_SPRITE   = "ancient_boss.png";
     public static final String BOSS_VIKING_SPRITE    = "viking_boss.png";
     public static final String BOSS_TOAD_KING_SPRITE = "toad_king_boss.png";
+    public static final String BOSS_CITY_SPRITE      = "city_boss.png";
     public static final String ENEMIGO13_SPRITE = "Bug.png";
     public static final String ENEMIGO14_SPRITE = "5_Goblin_melee.png";
     public static final String ENEMIGO15_SPRITE = "6_Goblin_range.png";

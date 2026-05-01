@@ -39,6 +39,7 @@ public class Level {
     private ArrayList<BossAncient>  bossAncients;
     private ArrayList<BossViking>   bossVikings;
     private ArrayList<BossToadKing> bossToadKings;
+    private ArrayList<BossCity>     bossCities;
     private ArrayList<enemigo13> enemigos13;
     private ArrayList<enemigo14> enemigos14;
     private ArrayList<enemigo15> enemigos15;
@@ -111,6 +112,7 @@ public class Level {
         bossAncients  = MetodoAyuda.GetBossAncients(img);
         bossVikings   = MetodoAyuda.GetBossVikings(img);
         bossToadKings = MetodoAyuda.GetBossToadKings(img);
+        bossCities    = MetodoAyuda.GetBossCities(img);
     }
 
     private void createLevelData() { lvlData = GetLevelData(img); }
@@ -149,6 +151,7 @@ public class Level {
     public ArrayList<BossAncient>   getBossAncients()  { return bossAncients; }
     public ArrayList<BossViking>    getBossVikings()   { return bossVikings; }
     public ArrayList<BossToadKing>  getBossToadKings() { return bossToadKings; }
+    public ArrayList<BossCity>      getBossCities()    { return bossCities; }
 
     public void clearAllEnemiesAndBosses() {
         if (golems     != null) golems.clear();
@@ -173,6 +176,7 @@ public class Level {
         if (bossAncients  != null) bossAncients.clear();
         if (bossVikings   != null) bossVikings.clear();
         if (bossToadKings != null) bossToadKings.clear();
+        if (bossCities    != null) bossCities.clear();
     }
 
     public void keepOneOfEachEnemyAndBoss() {
@@ -202,6 +206,7 @@ public class Level {
             (java.util.function.BiConsumer<Float, Float>) (x, y) -> bossAncients.add(new BossAncient(x, y)),
             (java.util.function.BiConsumer<Float, Float>) (x, y) -> bossVikings.add(new BossViking(x, y)),
             (java.util.function.BiConsumer<Float, Float>) (x, y) -> bossToadKings.add(new BossToadKing(x, y)),
+            (java.util.function.BiConsumer<Float, Float>) (x, y) -> bossCities.add(new BossCity(x, y)),
         };
 
         int[] cols = findSpreadFloorColumns(spawners.length);
@@ -220,7 +225,7 @@ public class Level {
         ENEMIGO1, ENEMIGO2, ENEMIGO3, ENEMIGO4, ENEMIGO5, ENEMIGO6,
         ENEMIGO7, ENEMIGO8, ENEMIGO9, ENEMIGO10, ENEMIGO11, ENEMIGO12,
         ENEMIGO13, ENEMIGO14, ENEMIGO15,
-        BOSS_TROL, BOSS_ANCIENT, BOSS_VIKING, BOSS_TOADKING
+        BOSS_TROL, BOSS_ANCIENT, BOSS_VIKING, BOSS_TOADKING, BOSS_CITY
     }
 
     private void spawnByType(EnemyType type, float x, float y) {
@@ -247,6 +252,7 @@ public class Level {
             case BOSS_ANCIENT: bossAncients.add(new BossAncient(x, y));   break;
             case BOSS_VIKING:  bossVikings.add(new BossViking(x, y));     break;
             case BOSS_TOADKING:bossToadKings.add(new BossToadKing(x, y)); break;
+            case BOSS_CITY:    bossCities.add(new BossCity(x, y));        break;
         }
     }
 

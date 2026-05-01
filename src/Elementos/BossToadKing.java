@@ -94,15 +94,18 @@ public class BossToadKing extends Enemy {
     }
 
     @Override
-    public int getAniRowOffset() {
+public int getAniRowOffset() {
         switch (state) {
-            case INACTIVO:             return 1;  // idle
-            case CAMINAR: case CORRER: return 8;  // caminar
-            case ATACAR1:              return 0;  // ataque con lengua
-            case ATAQUEC:              return 2;  // ataque con lengua larga
-            case GOLPE:                return 4;  // daño
-            case MUERTO:               return 4;  // muerte
-            default:                   return 1;
+            case ATACAR1:  return 0; // Fila 0
+            case ATACAR2:  return 1; // Fila 1
+            case ATACAR3:  return 2; // Fila 2
+            case ATAQUEC:  return 3; // Fila 3 (Especial)
+            case MUERTO:   return 4; // Fila 4
+            case GOLPE:    return 5; // Fila 5 (Rojo)
+            case INACTIVO: return 6; // Fila 6
+            case CAMINAR:  return 7; // Fila 7
+            case CORRER:   return 8; // Fila 8
+            default:       return 6; // Por defecto Inactivo
         }
     }
 

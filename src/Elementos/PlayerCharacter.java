@@ -20,7 +20,7 @@ public enum PlayerCharacter {
         LoadSave.PLAYER_ATLAS2,
         8, 18, 96, 64,
         20, 27,
-        36, 36,
+        36, 30,
         // Stats: tanque (mucha vida, lento, fuerte)
         150, 0.8f, -2.25f, 15
     ),
@@ -30,7 +30,7 @@ public enum PlayerCharacter {
         LoadSave.PLAYER_ATLAS3,
         8, 18, 96, 64,
         20, 27,
-        36, 36,
+        36, 30,
         // Stats: arquero élfico (poca vida, muy rápido, salto alto, daño alto)
         70, 1.5f, -2.75f, 9999
     ),

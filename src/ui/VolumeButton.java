@@ -1,10 +1,9 @@
 package ui;
 
+import static Utilz.Constantes.UI.VolumeButtons.*;
+import Utilz.LoadSave;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
-import Utilz.LoadSave;
-import static Utilz.Constantes.UI.VolumeButtons.*;
 
 public class VolumeButton extends PauseButton {
 

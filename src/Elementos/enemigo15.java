@@ -120,14 +120,16 @@ public class enemigo15 extends Enemy {
     }
 
     @Override
-    public int getAniRowOffset() {
+public int getAniRowOffset() {
+
         switch (state) {
-            case INACTIVO:              return 0;
-            case CAMINAR: case CORRER:  return 1;
-            case ATACAR1: case ATAQUEC: return 2;
-            case GOLPE:                 return 3;
-            case MUERTO:                return 4;
-            default:                    return 0;
+            case ATACAR1:  return 0; // Fila 0: Attack
+            case MUERTO:   return 1; // Fila 1: Death
+            case GOLPE:    return 2; // Fila 2: Hurt
+            case INACTIVO: return 3; // Fila 3: Idle
+            case CAMINAR:  return 4; // Fila 4: Walk
+            case CORRER:   return 4; // Fila 4: Walk (misma fila)
+            default:       return 3; // Por defecto Inactivo
         }
     }
 

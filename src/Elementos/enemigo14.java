@@ -42,38 +42,50 @@ public class enemigo14 extends Enemy {
         attackBox.y = hitbox.y;
     }
 
-    private void updateBehavior(int[][] lvlData, Jugador jugador) {
+private void updateBehavior(int[][] lvlData, Jugador jugador) {
         if (firstUpdate) firstUpdateCheck(lvlData);
         if (inAir) { updateInAir(lvlData); return; }
+        
         switch (state) {
-            case INACTIVO: newState(CORRER); break;
-            case CORRER:
+            case INACTIVO: 
+                newState(CAMINAR); 
+                break;
+            case CAMINAR:
+                // El enemigo patrulla de lado a lado. 
+                // SOLO voltea a ver al jugador si lo tiene en la mira sin paredes de por medio.
                 if (canSeePlayer(lvlData, jugador)) {
                     turnTowardsPlayer(jugador);
                     if (isPlayerCloseForAttack(jugador)) {
                         newState(ATACAR1);
-                        break;
                     }
                 }
-                move(lvlData);
+                
+                // Si no está atacando, que siga caminando
+                if (state != ATACAR1) {
+                    move(lvlData);
+                }
                 break;
             case ATACAR1:
                 if (animInd == 0) attackChecked = false;
-                if (animInd == 1 && !attackChecked) checkPlayerHit(attackBox, jugador);
+                // El golpe se registra en el frame 2 de la animación (cámbialo si tu sprite pega en otro frame)
+                if (animInd == 2 && !attackChecked) checkPlayerHit(attackBox, jugador);
                 break;
-            case GOLPE: break;
+            case GOLPE: 
+            case MUERTO: 
+                break;
         }
     }
 
-    @Override
     public int getAniRowOffset() {
+        // Mapeo exacto para tus sprites (Attack, Death, Hurt, Idle, Walk)
         switch (state) {
-            case INACTIVO:              return 0;
-            case CAMINAR: case CORRER:  return 1;
-            case ATACAR1: case ATAQUEC: return 2;
-            case GOLPE:                 return 3;
-            case MUERTO:                return 4;
-            default:                    return 0;
+            case ATACAR1:  return 0; // Fila 0: Attack
+            case MUERTO:   return 1; // Fila 1: Death
+            case GOLPE:    return 2; // Fila 2: Hurt
+            case INACTIVO: return 3; // Fila 3: Idle
+            case CAMINAR:  return 4; // Fila 4: Walk
+            case CORRER:   return 4; // Fila 4: Walk (misma fila)
+            default:       return 3; // Por defecto Inactivo
         }
     }
 

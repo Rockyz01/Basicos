@@ -112,16 +112,18 @@ public class TrolJefe extends Enemy {
         super.newState(enemyState);
     }
 
-    public int getAniRowOffset() {
+public int getAniRowOffset() {
         switch (state) {
-            case INACTIVO: return 0;
-            case CAMINAR:  return enraged ? 2 : 1;
-            case CORRER:   return enraged ? 8 : 7;
-            case ATACAR1:  return 4;
-            case ATAQUEC:  return 3;
-            case GOLPE:    return 5;
-            case MUERTO:   return 6;
-            default:       return 0;
+            case ATACAR1:  return 0; // Fila 0
+            case ATACAR2:  return 1; // Fila 1
+            case ATACAR3:  return 2; // Fila 2
+            case ATAQUEC:  return 3; // Fila 3 (Especial)
+            case MUERTO:   return 4; // Fila 4
+            case GOLPE:    return 5; // Fila 5 (Rojo)
+            case INACTIVO: return 6; // Fila 6
+            case CAMINAR:  return 7; // Fila 7
+            case CORRER:   return 8; // Fila 8
+            default:       return 6; // Por defecto Inactivo
         }
     }
 

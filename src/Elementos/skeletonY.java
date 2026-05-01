@@ -1,9 +1,9 @@
 package Elementos;
 
-import java.awt.geom.Rectangle2D;
 import Juegos.Juego;
 import static Utilz.Constantes.Direccion.*;
 import static Utilz.Constantes.EnemyConstants.*;
+import java.awt.geom.Rectangle2D;
 
 
 public class skeletonY extends Enemy {
